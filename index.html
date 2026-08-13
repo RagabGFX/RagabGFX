@@ -1,65 +1,87 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RagabGFX — Graphic Designer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RagabGFX — Graphic Designer</title>
+  <meta name="description" content="RagabGFX — Graphic Designer & Sports Creative.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="noise"></div>
-<header class="nav">
-  <a href="#home" class="logo">Ragab<span>GFX</span></a>
-  <nav><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
-  <a href="#contact" class="talk">Let's talk <span>↗</span></a>
-</header>
+  <div class="noise"></div>
+  <div class="cursor"></div>
+  <div class="cursor-dot"></div>
 
-<main>
-<section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-copy">
-    <div class="eyebrow reveal">GRAPHIC DESIGNER · SPORTS CREATIVE</div>
-    <h1 class="reveal">Visuals that<br><em>move.</em></h1>
-    <p class="reveal">Sports design, campaigns and visual identities crafted with direction, detail and a little attitude.</p>
-    <a href="#work" class="scroll-cta reveal">Scroll to explore <span>↓</span></a>
-  </div>
+  <header class="nav glass">
+    <a class="logo magnetic" href="#top">Ragab<span>GFX</span></a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-btn magnetic" href="#contact">Let's talk <b>↗</b></a>
+  </header>
 
-  <div class="portrait-wrap" aria-hidden="true">
-    <div class="portrait-red"></div>
-    <div class="glass-orb"></div>
-    <div class="glass-panel"></div>
-    <img class="portrait-glow" src="assets/portrait-glow.png" alt="">
-    <img class="portrait" src="assets/portrait.png" alt="">
-    <div class="portrait-fade"></div>
-  </div>
+  <main id="top">
+    <section class="hero">
+      <div class="orb orb-a"></div><div class="orb orb-b"></div>
+      <div class="hero-kicker reveal">GRAPHIC DESIGNER · SPORTS CREATIVE</div>
+      <h1 class="hero-title reveal">Visuals that<br><span>move people.</span></h1>
+      <p class="hero-copy reveal">I create bold sports graphics, identities and digital experiences with a sharp eye for art direction and detail.</p>
+      <a class="scroll-link magnetic reveal" href="#work">Explore selected work <span>↓</span></a>
+      <div class="hero-bottom reveal"><span>Based in Egypt</span><span>Available for freelance</span><span>© 2026</span></div>
+    </section>
 
-  <div class="hero-bottom"><span>MOHAMED RAGAB</span><span>BASED IN EGYPT</span><span>SCROLL ↓</span></div>
-</section>
+    <section id="work" class="work-section">
+      <div class="section-head reveal">
+        <div><span class="eyebrow">SELECTED WORK</span><h2>Made to<br><em>stand out.</em></h2></div>
+        <p>A curated selection of visual work across sports, digital campaigns, branding and 3D.</p>
+      </div>
 
-<section class="work" id="work">
-  <div class="section-head reveal"><div><div class="eyebrow">SELECTED WORK</div><h2>Built to<br><em>stand out.</em></h2></div><p>Selected visual work across sports, campaigns, social content, branding and 3D.</p></div>
-  <div class="projects">
-    <article class="project reveal"><div class="project-image p1"><span>YOUR IMAGE 01</span></div><div class="project-meta"><b>Football Campaign</b><small>Art Direction · Social</small></div></article>
-    <article class="project offset reveal"><div class="project-image p2"><span>YOUR IMAGE 02</span></div><div class="project-meta"><b>Sports Identity</b><small>Branding · Identity</small></div></article>
-    <article class="project offset2 reveal"><div class="project-image p3"><span>YOUR IMAGE 03</span></div><div class="project-meta"><b>Matchday Visuals</b><small>Digital · Campaign</small></div></article>
-    <article class="project reveal"><div class="project-image p4"><span>YOUR IMAGE 04</span></div><div class="project-meta"><b>3D Experiments</b><small>3D · Art Direction</small></div></article>
-  </div>
-</section>
+      <div class="grid">
+        <article class="project project-large reveal" data-project="01">
+          <div class="project-image glass-card"><div class="project-glow"></div><span>PROJECT 01</span><i>↗</i></div>
+          <div class="project-meta"><h3>Football Campaign</h3><span>Art Direction · Social</span></div>
+        </article>
+        <article class="project reveal" data-project="02">
+          <div class="project-image glass-card alt"><div class="project-glow"></div><span>PROJECT 02</span><i>↗</i></div>
+          <div class="project-meta"><h3>Sports Identity</h3><span>Branding · Identity</span></div>
+        </article>
+        <article class="project reveal" data-project="03">
+          <div class="project-image glass-card dark"><div class="project-glow"></div><span>PROJECT 03</span><i>↗</i></div>
+          <div class="project-meta"><h3>Matchday Visuals</h3><span>Digital · Campaign</span></div>
+        </article>
+        <article class="project project-large reveal" data-project="04">
+          <div class="project-image glass-card warm"><div class="project-glow"></div><span>PROJECT 04</span><i>↗</i></div>
+          <div class="project-meta"><h3>3D Experiments</h3><span>3D · Art Direction</span></div>
+        </article>
+      </div>
+    </section>
 
-<section class="about" id="about">
-  <div class="eyebrow reveal">ABOUT</div>
-  <div class="about-grid"><h2 class="reveal">Good design<br>should <em>feel.</em></h2><div class="about-text reveal"><p>I'm Mohamed Ragab, a graphic designer focused on sports, digital campaigns, visual identities and high-impact compositions.</p><p>I turn a brief into a visual system that feels premium, clear and memorable.</p><div class="tags"><span>Sports Design</span><span>Art Direction</span><span>Branding</span><span>Social Media</span><span>3D</span></div></div></div>
-</section>
+    <section id="about" class="about-section">
+      <span class="eyebrow reveal">ABOUT</span>
+      <div class="about-grid">
+        <h2 class="reveal">Designing with<br><em>intention.</em></h2>
+        <div class="reveal">
+          <p>I'm Mohamed Ragab, a graphic designer focused on sports, digital campaigns, visual identities and high-impact compositions.</p>
+          <p>I turn briefs into visuals that feel clear, premium and memorable — from the first concept to the final artwork.</p>
+          <div class="services">
+            <span>Sports Design</span><span>Art Direction</span><span>Branding</span><span>Social Media</span><span>3D</span><span>Campaigns</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section class="contact" id="contact">
-  <div class="eyebrow reveal">CONTACT</div><h2 class="reveal">Let's make<br><em>something good.</em></h2>
-  <a class="email reveal" href="mailto:hello@ragabgfx.com">hello@ragabgfx.com <span>↗</span></a>
-  <footer><span>AVAILABLE FOR FREELANCE & CREATIVE COLLABORATIONS</span><span>© 2026 RAGABGFX</span></footer>
-</section>
-</main>
-<script src="script.js"></script>
+    <section id="contact" class="contact-section">
+      <span class="eyebrow reveal">CONTACT</span>
+      <h2 class="reveal">Let's make<br><em>something good.</em></h2>
+      <a class="email magnetic reveal" href="mailto:hello@ragabgfx.com">hello@ragabgfx.com <span>↗</span></a>
+      <div class="contact-bottom"><span>Available for freelance & creative collaborations</span><span>© 2026 RagabGFX</span></div>
+    </section>
+  </main>
+  <script src="script.js"></script>
 </body>
 </html>
