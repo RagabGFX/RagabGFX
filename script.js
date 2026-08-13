@@ -3,6 +3,10 @@ let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
 addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY});
 function cursorLoop(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;if(dot){dot.style.left=mx+'px';dot.style.top=my+'px'}if(ring){ring.style.left=rx+'px';ring.style.top=ry+'px'}requestAnimationFrame(cursorLoop)}cursorLoop();
 document.querySelectorAll('a').forEach(a=>{a.addEventListener('mouseenter',()=>{if(ring){ring.style.width='48px';ring.style.height='48px'}});a.addEventListener('mouseleave',()=>{if(ring){ring.style.width='32px';ring.style.height='32px'}})});
+
+// Subtle text interaction: the word under the pointer softens/blurred, restoring the original cursor feel.
+const textTargets=document.querySelectorAll('h1,h2,h3,.eyebrow,.hero-text,.section-note,.card-content small,.card-content span,nav a,.brand,.nav-cta,.pill,.hero-meta span,.about-copy p,.contact-row>a,footer span');
+textTargets.forEach(el=>{el.classList.add('cursor-blur-target');el.addEventListener('mouseenter',()=>el.classList.add('is-cursor-hover'));el.addEventListener('mouseleave',()=>el.classList.remove('is-cursor-hover'));});
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('is-visible')}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 const hero=document.querySelector('.hero-image-wrap');
