@@ -1,3 +1,3 @@
-# RagabGFX Portfolio — Glassy Edition
+# RagabGFX — Red/Black Connected Edition
 
-Updated portfolio with glass UI, smooth scrolling, reveal animations, hover effects and responsive layout.
+Red-black portfolio with continuous section transitions, reveal animations, parallax project frames, glass navigation and restrained burgundy accents.
