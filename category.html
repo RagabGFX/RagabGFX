@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RagabGFX — Selected Work</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="inner-page">
+  <div class="noise"></div>
+  <header class="nav glass">
+    <a class="brand" href="index.html">Ragab<span>GFX</span></a>
+    <nav><a href="index.html#work">Work</a><a href="index.html#clients">Clients</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav>
+    <a class="nav-cta" href="index.html#contact">Let's talk <span>↗</span></a>
+  </header>
+
+  <main class="category-page">
+    <a class="back" href="index.html#work">← Back to work</a>
+    <div class="category-hero reveal">
+      <p class="eyebrow" id="category-kicker">SELECTED WORK</p>
+      <h1 id="category-title">MATCHDAYS</h1>
+      <p id="category-desc"></p>
+    </div>
+
+    <div class="samples-head">
+      <span>SELECTED SAMPLES</span><span id="sample-count"></span>
+    </div>
+    <div class="sample-grid" id="sample-grid">
+      <div class="sample-placeholder"><strong>YOUR WORK GOES HERE</strong><span>Drop your images into the matching assets folder and duplicate a sample card in category.html.</span></div>
+      <div class="sample-placeholder"><strong>READY FOR YOUR PROJECTS</strong><span>The structure is already built for category-by-category samples.</span></div>
+      <div class="sample-placeholder"><strong>CASE STUDIES NEXT</strong><span>We can turn any sample into a full project page later.</span></div>
+    </div>
+  </main>
+  <footer><span>© 2026 RagabGFX</span><span>Selected work.</span></footer>
+  <script src="script.js"></script>
+  <script>
+    const data = {
+      matchdays: ["MATCHDAYS","01 / SPORTS","Matchday systems, fixtures, line-ups and live sports visuals."],
+      "hero-graphics": ["HERO GRAPHICS","02 / VISUALS","High-impact hero compositions and campaign-led sports visuals."],
+      identities: ["IDENTITIES","03 / BRANDING","Visual identities, logos, systems and brand applications."],
+      manipulation: ["MANIPULATION","04 / ART DIRECTION","Photo manipulation, compositing and cinematic visual direction."]
+    };
+    const key = new URLSearchParams(location.search).get("cat") || "matchdays";
+    const item = data[key] || data.matchdays;
+    document.title = "RagabGFX — " + item[0];
+    document.getElementById("category-kicker").textContent = item[1];
+    document.getElementById("category-title").textContent = item[0];
+    document.getElementById("category-desc").textContent = item[2];
+    document.getElementById("sample-count").textContent = "03 PLACEHOLDERS";
+  </script>
+</body>
+</html>
