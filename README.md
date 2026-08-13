@@ -1,1 +1,3 @@
-# RagabGFX — Final Website\n\nPalette: #B82B2B red / #1B1B1B black. Hero portrait is already included in `assets/portrait-cutout.png`.\n
+# RagabGFX — Integrated Hero
+
+Palette: #B82B2B / #1B1B1B. The original portrait is cut out and integrated directly into the hero with glass, glow, fade and parallax effects.
