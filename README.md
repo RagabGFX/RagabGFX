@@ -1,3 +1,1 @@
-# RagabGFX — Red/Black Connected Edition
-
-Red-black portfolio with continuous section transitions, reveal animations, parallax project frames, glass navigation and restrained burgundy accents.
+# RagabGFX — Final Website\n\nPalette: #B82B2B red / #1B1B1B black. Hero portrait is already included in `assets/portrait-cutout.png`.\n
