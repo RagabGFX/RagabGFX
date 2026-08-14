@@ -1,132 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RagabGFX — Graphic Designer</title>
-  <meta name="description" content="RagabGFX — sports, identity and visual design portfolio.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sports Visual Archive</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#080808;color:#f5f5f2;font-family:Arial,Helvetica,sans-serif}
+nav{position:fixed;z-index:10;top:0;left:0;right:0;padding:24px 4vw;display:flex;justify-content:space-between;text-transform:uppercase;letter-spacing:.14em;font-size:11px;mix-blend-mode:difference}
+.hero{height:100vh;min-height:650px;position:relative;display:flex;align-items:end;padding:5vw;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background-image:url("assets/01-saudi-league.jpg");background-size:cover;background-position:center;filter:saturate(.9);transform:scale(1.04)}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.85))}
+.heroText{position:relative;z-index:2}.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.7;margin-bottom:15px}
+h1{font-size:clamp(60px,9vw,145px);line-height:.82;letter-spacing:-.07em;margin:0}
+.work{padding:120px 4vw 160px}.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:45px}.head h2{font-size:clamp(44px,6vw,90px);line-height:.88;letter-spacing:-.06em;margin:0}.head p{max-width:350px;color:#999;font-size:13px;line-height:1.7}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{position:relative;height:600px;overflow:hidden;background:#161616;grid-column:span 4;cursor:pointer}.card:nth-child(2),.card:nth-child(5),.card:nth-child(8){grid-column:span 8}.card:nth-child(4),.card:nth-child(7),.card:nth-child(10){grid-column:span 6}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}.card:hover img{transform:scale(1.06)}.card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.85))}
+.info{position:absolute;z-index:2;bottom:22px;left:24px;right:24px;display:flex;justify-content:space-between;align-items:end}.cat{font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.6;margin-bottom:8px}.title{font-size:25px;font-weight:700;letter-spacing:-.03em}.num{font-size:11px;opacity:.55}
+.about{padding:100px 4vw;min-height:60vh;background:#111;display:grid;grid-template-columns:1fr 1fr;gap:10vw;align-items:center}.about h2{font-size:clamp(45px,6vw,90px);line-height:.9;letter-spacing:-.06em;margin:0}.about p{color:#999;line-height:1.8;max-width:500px}
+footer{border-top:1px solid #222;padding:25px 4vw;display:flex;justify-content:space-between;color:#666;font-size:10px;text-transform:uppercase;letter-spacing:.12em}
+.modal{display:none;position:fixed;z-index:30;inset:0;background:rgba(0,0,0,.94);padding:35px}.modal.open{display:block}.modal img{width:100%;height:100%;object-fit:contain}.close{position:absolute;right:25px;top:15px;background:none;border:0;color:#fff;font-size:35px;cursor:pointer}.counter{position:absolute;left:28px;top:25px;color:#aaa;font-size:11px;z-index:2}
+@media(max-width:800px){.hero{height:85vh;padding:25px}.work{padding:80px 20px}.head{display:block}.head p{margin-top:25px}.grid{display:block}.card{height:72vh;margin-bottom:14px}.about{display:block;padding:80px 20px}.about p{margin-top:35px}.navlinks{display:none}}
+</style>
 </head>
 <body>
-  <div class="noise"></div>
-  <div class="cursor-dot"></div>
-  <div class="cursor-ring"></div>
-
-  <header class="nav glass">
-    <a class="brand" href="index.html" aria-label="RagabGFX home">Ragab<span>GFX</span></a>
-    <nav>
-      <a href="#work">Work</a>
-      <a href="#clients">Clients</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="nav-cta" href="#contact">Let's talk <span>↗</span></a>
-  </header>
-
-  <main>
-    <section class="hero" id="top">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">GRAPHIC DESIGNER / SPORTS & VISUALS</p>
-        <h1>Visuals<br><em>that move.</em></h1>
-        <p class="hero-text">I create bold visual systems, sports graphics and digital experiences built to be remembered.</p>
-        <a class="pill" href="#work">Explore selected work <span>↓</span></a>
-      </div>
-      <div class="hero-image-wrap reveal">
-        <div class="hero-aura"></div>
-        <img src="assets/hero-profile.png" class="hero-image" alt="RagabGFX portrait artwork">
-        <div class="hero-glass"></div>
-      </div>
-      <div class="hero-meta">
-        <span>BASED IN EGYPT</span>
-        <span>AVAILABLE FOR SELECTED PROJECTS</span>
-      </div>
-    </section>
-
-    <section class="work section" id="work">
-      <div class="section-head reveal">
-        <div>
-          <p class="eyebrow">SELECTED WORK</p>
-          <h2>Built for <span>impact.</span></h2>
-        </div>
-        <p class="section-note">Four directions. One visual language.</p>
-      </div>
-
-      <div class="category-grid">
-        <a class="category-card card-tall reveal" href="category.html?cat=matchdays">
-          <div class="card-bg" style="background-image:url('assets/covers/matchdays.png')"></div>
-          <div class="ghost-word">MATCH</div>
-          <div class="card-content"><small>01 / SPORTS</small><h3>MATCHDAYS</h3><span>View samples ↗</span></div>
-        </a>
-        <a class="category-card reveal" href="category.html?cat=hero-graphics">
-          <div class="card-bg" style="background-image:url('assets/covers/hero-graphics.png')"></div>
-          <div class="ghost-word">HERO</div>
-          <div class="card-content"><small>02 / VISUALS</small><h3>HERO<br>GRAPHICS</h3><span>View samples ↗</span></div>
-        </a>
-        <a class="category-card reveal" href="category.html?cat=identities">
-          <div class="card-bg" style="background-image:url('assets/covers/identities.png')"></div>
-          <div class="ghost-word">ID</div>
-          <div class="card-content"><small>03 / BRANDING</small><h3>IDENTITIES</h3><span>View samples ↗</span></div>
-        </a>
-        <a class="category-card card-wide reveal" href="category.html?cat=manipulation">
-          <div class="card-bg" style="background-image:url('assets/covers/manipulation.png')"></div>
-          <div class="ghost-word">MANIP</div>
-          <div class="card-content"><small>04 / ART DIRECTION</small><h3>MANIPULATION</h3><span>View samples ↗</span></div>
-        </a>
-      </div>
-    </section>
-
-    <section class="clients section" id="clients">
-      <div class="section-head reveal">
-        <div>
-          <p class="eyebrow">SELECTED CLIENTS</p>
-          <h2>Trusted by <span>teams.</span></h2>
-        </div>
-        <p class="section-note">A selection of clubs, federations, leagues and sports brands.</p>
-      </div>
-      <div class="clients-panel glass reveal">
-        <img src="assets/clients.png" alt="Selected clients and sports brands">
-      </div>
-    </section>
-
-    <section class="about section" id="about">
-      <div class="about-grid">
-        <div class="reveal">
-          <p class="eyebrow">ABOUT</p>
-          <h2>Design with a<br><span>competitive edge.</span></h2>
-        </div>
-        <div class="about-copy reveal">
-          <p>RagabGFX is a graphic design practice focused on sports, identities, campaigns and high-impact digital visuals.</p>
-          <p>I care about strong concepts, clean systems and details that make a visual feel finished rather than simply decorated.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact section" id="contact">
-      <div class="contact-card glass reveal">
-        <p class="eyebrow">CONTACT</p>
-        <h2>Let's make something<br><span>worth scrolling for.</span></h2>
-        <div class="contact-row">
-          <a href="#top">Available for selected projects ↗</a>
-          <div class="socials" aria-label="Social links">
-            <a href="https://www.linkedin.com/in/mohamed-ragab-648a1a21b/" target="_blank" rel="noopener" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24"><path d="M5.2 3.5A2.2 2.2 0 1 1 5.2 7.9 2.2 2.2 0 0 1 5.2 3.5ZM3.4 9h3.6v11.6H3.4V9Zm5.8 0h3.4v1.6h.1c.5-.9 1.7-2 3.5-2 3.8 0 4.5 2.5 4.5 5.7v6.3h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9v5.7H9.2V9Z"/></svg>
-            </a>
-            <a href="https://www.facebook.com/MaDoPH/" target="_blank" rel="noopener" aria-label="Facebook">
-              <svg viewBox="0 0 24 24"><path d="M14 8h2.4V4.6c-.4-.1-1.6-.2-3-.2-3 0-5 1.8-5 5.1v2.8H5v3.8h3.4v9.5h4.2v-9.5h3.4l.5-3.8h-3.9V9.8c0-1.1.3-1.8 1.4-1.8Z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/mohamed_ragabgfx/" target="_blank" rel="noopener" aria-label="Instagram">
-              <svg viewBox="0 0 24 24"><path d="M7.2 2.7h9.6A4.5 4.5 0 0 1 21.3 7.2v9.6a4.5 4.5 0 0 1-4.5 4.5H7.2a4.5 4.5 0 0 1-4.5-4.5V7.2a4.5 4.5 0 0 1 4.5-4.5Zm0 2A2.5 2.5 0 0 0 4.7 7.2v9.6a2.5 2.5 0 0 0 2.5 2.5h9.6a2.5 2.5 0 0 0 2.5-2.5V7.2a2.5 2.5 0 0 0-2.5-2.5H7.2Zm4.8 2.2A5.1 5.1 0 1 1 6.9 12a5.1 5.1 0 0 1 5.1-5.1Zm0 2A3.1 3.1 0 1 0 15.1 12a3.1 3.1 0 0 0-3.1-3.1Zm5.5-2.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer><span>© 2026 RagabGFX</span><span>Designed to move.</span></footer>
-  <script src="script.js"></script>
-</body>
-</html>
+<nav><b>Sports Visual Archive</b><span class="navlinks">Work &nbsp;&nbsp; About</span></nav>
+<section class="hero"><div class="heroText"><div class="eyebrow">Selected Sports Visuals · 2025—26</div><h1>Visuals<br>with impact.</h1></div></section>
+<section class="work" id="work"><div class="head"><h2>Hero<br>Categories</h2><p>The supplied visuals are now integrated directly as the hero artwork. More images can be added to this same system tomorrow.</p></div><div class="grid" id="grid"></div></section>
+<section class="about"><h2>Built for<br>the work.</h2><p>Image-led, editorial and minimal — with large hero crops, subtle motion, hover states and a fullscreen viewer. No framework or paid service is required.</p></section>
+<footer><span>Sports Visual Archive</span><span>Hero Categories / 01—10</span></footer>
+<div class="modal" id="modal"><button class="close">×</button><div class="counter" id="counter"></div><img id="modalImg"></div>
+<script>
+const items=[
+["Saudi League","Saudi Football","01-saudi-league.jpg"],
+["Basketball","Dubai Basketball","02-basketball.jpg"],
+["NEOM × Al Hilal","Saudi Football","03-neom-alhilal.jpg"],
+["King's Cup","Cup Final","04-kings-cup.jpg"],
+["Ligue 1","Hero Graphic","05-ligue1-himad.jpg"],
+["Ligue 1","Player Campaign","06-ligue1-aguerd.jpg"],
+["World Cup","Matchday","07-world-cup.jpg"],
+["Player Story","Mostafa Mohamed","08-mostafa-mohamed.jpg"],
+["Al Jazira","To The Final","09-aljazira.jpg"],
+["Saudi League","Concept / Hero","10-rsl.jpg"]
+];
+const grid=document.getElementById("grid");
+items.forEach((x,i)=>{let c=document.createElement("article");c.className="card";c.innerHTML='<img src="assets/'+x[2]+'" alt="'+x[0]+'"><div class="info"><div><div class="cat">'+x[1]+'</div><div class="title">'+x[0]+'</div></div><div class="num">'+String(i+1).padStart(2,"0")+'</div></div>';c.onclick=()=>open(i);grid.appendChild(c)});
+const modal=document.getElementById("modal"),im=document.getElementById("modalImg"),counter=document.getElementById("counter");
+function open(i){modal.classList.add("open");im.src="assets/"+items[i][2];counter.textContent=String(i+1).padStart(2,"0")+" / 10 · "+items[i][0]}
+function close(){modal.classList.remove("open");im.src=""}
+document.querySelector(".close").onclick=close;modal.onclick=e=>{if(e.target===modal)close()};document.onkeydown=e=>{if(e.key==="Escape")close()}
+</script>
+</body></html>

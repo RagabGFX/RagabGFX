@@ -1,0 +1,1 @@
+Open index.html to view the site. The 10 supplied hero visuals are already included in assets/. To add tomorrow's images, copy them into assets/ and add them to the items array in index.html.
