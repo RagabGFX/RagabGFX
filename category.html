@@ -28,11 +28,7 @@
     <div class="samples-head">
       <span>SELECTED SAMPLES</span><span id="sample-count"></span>
     </div>
-    <div class="sample-grid" id="sample-grid">
-      <div class="sample-placeholder"><strong>YOUR WORK GOES HERE</strong><span>Drop your images into the matching assets folder and duplicate a sample card in category.html.</span></div>
-      <div class="sample-placeholder"><strong>READY FOR YOUR PROJECTS</strong><span>The structure is already built for category-by-category samples.</span></div>
-      <div class="sample-placeholder"><strong>CASE STUDIES NEXT</strong><span>We can turn any sample into a full project page later.</span></div>
-    </div>
+    <div class="sample-grid" id="sample-grid"></div>
   </main>
   <footer><span>© 2026 RagabGFX</span><span>Selected work.</span></footer>
   <script src="script.js"></script>
@@ -49,7 +45,71 @@
     document.getElementById("category-kicker").textContent = item[1];
     document.getElementById("category-title").textContent = item[0];
     document.getElementById("category-desc").textContent = item[2];
-    document.getElementById("sample-count").textContent = "03 PLACEHOLDERS";
+    const grid = document.getElementById("sample-grid");
+    if (key === "hero-graphics") {
+      const heroImages = [
+        ["01-saudi-league.webp", "Saudi League"],
+        ["02-basketball.webp", "Dubai Basketball"],
+        ["03-neom-vs-alhilal.webp", "NEOM vs Al Hilal"],
+        ["04-kings-cup.webp", "King's Cup"],
+        ["05-ligue1-himad.webp", "Ligue 1 — Himad Abdelli"],
+        ["06-ligue1-aguerd.webp", "Ligue 1 — Nayef Aguerd"],
+        ["07-world-cup.webp", "World Cup — Spain vs Saudi Arabia"],
+        ["08-mostafa-mohamed.webp", "Mostafa Mohamed"],
+        ["09-aljazira.webp", "Al Jazira — To The Final"],
+        ["10-rsl.webp", "Saudi League — RSL"]
+      ];
+      grid.innerHTML = heroImages.map(([file, title]) => `
+        <article class="sample-card reveal is-visible">
+          <div class="sample-image-wrap"><img class="sample-image" src="assets/hero-graphics/${file}" alt="${title}" loading="lazy"></div>
+          <div class="sample-caption"><span>${title}</span><small>HERO GRAPHIC</small></div>
+        </article>`).join("");
+      document.getElementById("sample-count").textContent = "10 SAMPLES";
+    } else {
+      grid.innerHTML = `
+        <div class="sample-placeholder"><strong>YOUR WORK GOES HERE</strong><span>Drop your images into the matching assets folder and duplicate a sample card in category.html.</span></div>
+        <div class="sample-placeholder"><strong>READY FOR YOUR PROJECTS</strong><span>The structure is already built for category-by-category samples.</span></div>
+        <div class="sample-placeholder"><strong>CASE STUDIES NEXT</strong><span>We can turn any sample into a full project page later.</span></div>`;
+      document.getElementById("sample-count").textContent = "03 PLACEHOLDERS";
+    }
   </script>
+
+<script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  const cat = params.get('cat');
+  if(cat !== 'hero-graphics') return;
+
+  const grid = document.getElementById('sample-grid');
+  const count = document.getElementById('sample-count');
+  if(!grid) return;
+
+  const heroWorks = [
+    ['assets/hero-graphics/01-1080x1350.webp','Saudi League','Hero Graphic'],
+    ['assets/hero-graphics/02-arakji-psd.webp','Basketball','Hero Graphic'],
+    ['assets/hero-graphics/03-neom-vs-alhilal.webp','NEOM × Al Hilal','Hero Graphic'],
+    ['assets/hero-graphics/04-kings-cup-final.webp', "King's Cup",'Hero Graphic'],
+    ['assets/hero-graphics/05-himad-abdelli.webp','Ligue 1','Hero Graphic'],
+    ['assets/hero-graphics/06-nayef-aguerd.webp','Ligue 1','Player Graphic'],
+    ['assets/hero-graphics/07-spain-vs-saudi.webp','World Cup','Matchday Graphic'],
+    ['assets/hero-graphics/08-mostafa-mohamed.webp','Mostafa Mohamed','Hero Graphic'],
+    ['assets/hero-graphics/09-al-jazira.webp','Al Jazira','Qualification Graphic'],
+    ['assets/hero-graphics/10-scorrer.webp','Saudi League','Concept Graphic']
+  ];
+
+  grid.innerHTML = '';
+  heroWorks.forEach((w,i)=>{
+    const card=document.createElement('article');
+    card.className='sample-card reveal is-visible';
+    card.innerHTML =
+      '<img loading="'+(i<3?'eager':'lazy')+'" src="'+w[0]+'" alt="'+w[1]+'">'+
+      '<div class="sample-info"><div><small>'+w[2]+'</small><strong>'+w[1]+'</strong></div>'+
+      '<span class="sample-index">'+String(i+1).padStart(2,'0')+'</span></div>';
+    grid.appendChild(card);
+  });
+  if(count) count.textContent = String(heroWorks.length).padStart(2,'0') + ' SELECTED WORKS';
+})();
+</script>
+
 </body>
 </html>
