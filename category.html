@@ -111,5 +111,70 @@
 })();
 </script>
 
+
+<div class="portfolio-lightbox" id="portfolioLightbox" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+  <button class="lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+  <img id="lbImage" alt="">
+  <button class="lb-next" id="lbNext" aria-label="Next">›</button>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+<script>
+(function(){
+  const box=document.getElementById('portfolioLightbox');
+  const image=document.getElementById('lbImage');
+  const close=document.getElementById('lbClose');
+  const prev=document.getElementById('lbPrev');
+  const next=document.getElementById('lbNext');
+  const counter=document.getElementById('lbCounter');
+  if(!box) return;
+
+  let cards=[];
+  let index=0;
+
+  function refresh(){
+    cards=[...document.querySelectorAll('.sample-card')];
+  }
+  function open(i){
+    refresh();
+    if(!cards.length) return;
+    index=(i+cards.length)%cards.length;
+    const img=cards[index].querySelector('img');
+    image.src=img.currentSrc || img.src;
+    image.alt=img.alt || '';
+    counter.textContent=String(index+1).padStart(2,'0')+' / '+String(cards.length).padStart(2,'0');
+    box.classList.add('is-open');
+    box.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  }
+  function shut(){
+    box.classList.remove('is-open');
+    box.setAttribute('aria-hidden','true');
+    image.removeAttribute('src');
+    document.body.style.overflow='';
+  }
+  function go(delta){open(index+delta)}
+
+  document.addEventListener('click',e=>{
+    const card=e.target.closest('.sample-card');
+    if(card){
+      e.preventDefault();
+      refresh();
+      open(cards.indexOf(card));
+    }
+  });
+  close.addEventListener('click',shut);
+  prev.addEventListener('click',()=>go(-1));
+  next.addEventListener('click',()=>go(1));
+  box.addEventListener('click',e=>{if(e.target===box) shut()});
+  document.addEventListener('keydown',e=>{
+    if(!box.classList.contains('is-open')) return;
+    if(e.key==='Escape') shut();
+    if(e.key==='ArrowLeft') go(-1);
+    if(e.key==='ArrowRight') go(1);
+  });
+})();
+</script>
+
 </body>
 </html>
