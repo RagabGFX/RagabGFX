@@ -14,7 +14,7 @@ addEventListener('scroll',()=>{if(hero){hero.style.transform=`translate3d(0,${Ma
 
 
 /* Ragab's Bot — bilingual, no API, no paid service */
-(function(){
+document.addEventListener('DOMContentLoaded', function(){
   const $=id=>document.getElementById(id);
   const launcher=$('ragabBotLauncher'), win=$('ragabBotWindow'), close=$('ragabBotClose');
   const messages=$('ragabBotMessages'), form=$('ragabBotForm'), input=$('ragabBotInput');
@@ -103,4 +103,4 @@ addEventListener('scroll',()=>{if(hero){hero.style.transform=`translate3d(0,${Ma
   close.onclick=()=>{win.classList.remove('open');win.setAttribute('aria-hidden','true')};
   form.onsubmit=e=>{e.preventDefault();const q=input.value.trim();if(!q)return;add(q,'user');input.value='';setTimeout(()=>reply(q),150)};
   document.querySelectorAll('[data-bot-action]').forEach(b=>b.onclick=()=>doAction(b.dataset.botAction));
-})();
+});
