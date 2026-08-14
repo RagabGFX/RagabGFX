@@ -128,5 +128,33 @@
 
   <footer><span>© 2026 RagabGFX</span><span>Designed to move.</span></footer>
   <script src="script.js"></script>
+
+<!-- Ragab's Bot -->
+<div class="ragab-bot" id="ragabBot">
+  <button class="ragab-bot-launcher" id="ragabBotLauncher" aria-label="Open Ragab's Bot">
+    <span class="ragab-bot-dot"></span><span>Ragab's Bot</span>
+  </button>
+  <div class="ragab-bot-window" id="ragabBotWindow" aria-hidden="true">
+    <div class="ragab-bot-head">
+      <div><strong>Ragab's Bot</strong><small>Portfolio assistant</small></div>
+      <button id="ragabBotClose" aria-label="Close">×</button>
+    </div>
+    <div class="ragab-bot-messages" id="ragabBotMessages">
+      <div class="ragab-msg bot">Hi 👋<br>How can I help you explore the portfolio?</div>
+      <div class="ragab-bot-actions">
+        <button data-bot-action="behance">Behance</button>
+        <button data-bot-action="identities">Identities</button>
+        <button data-bot-action="matchdays">Matchdays</button>
+        <button data-bot-action="hero">Hero Graphics</button>
+        <button data-bot-action="socials">Socials</button>
+      </div>
+    </div>
+    <form class="ragab-bot-input" id="ragabBotForm">
+      <input id="ragabBotInput" autocomplete="off" placeholder="Ask me anything..." />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</div>
+
 </body>
 </html>

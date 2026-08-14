@@ -295,3 +295,25 @@ footer{padding:25px max(7vw,36px);display:flex;justify-content:space-between;col
   .lb-prev{left:10px}.lb-next{right:10px}
   .lb-close{right:14px;top:12px}
 }
+
+
+/* Ragab's Bot — free, rule-based, isolated component */
+.ragab-bot{position:fixed;right:24px;bottom:24px;z-index:10000;font-family:inherit}
+.ragab-bot-launcher{border:1px solid rgba(255,255,255,.14);background:rgba(27,27,27,.76);color:#fff;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:999px;padding:12px 17px;display:flex;align-items:center;gap:9px;cursor:pointer;box-shadow:0 12px 40px rgba(0,0,0,.3);transition:.25s}
+.ragab-bot-launcher:hover{border-color:rgba(184,43,43,.65);transform:translateY(-2px)}
+.ragab-bot-dot{width:7px;height:7px;border-radius:50%;background:#b82b2b;box-shadow:0 0 12px rgba(184,43,43,.8)}
+.ragab-bot-window{display:none;width:340px;height:480px;margin-bottom:12px;border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;background:rgba(16,16,16,.93);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 25px 90px rgba(0,0,0,.5)}
+.ragab-bot-window.open{display:flex;flex-direction:column}
+.ragab-bot-head{display:flex;align-items:center;justify-content:space-between;padding:17px 18px;border-bottom:1px solid rgba(255,255,255,.08)}
+.ragab-bot-head strong{display:block;font-size:14px}.ragab-bot-head small{display:block;color:#888;font-size:10px;margin-top:4px}
+.ragab-bot-head button{border:0;background:none;color:#aaa;font-size:24px;cursor:pointer}
+.ragab-bot-messages{flex:1;overflow:auto;padding:17px}
+.ragab-msg{max-width:88%;padding:11px 13px;border-radius:13px;margin-bottom:10px;font-size:12px;line-height:1.55}
+.ragab-msg.bot{background:#202020;color:#eee}.ragab-msg.user{background:#b82b2b;color:#fff;margin-left:auto}
+.ragab-bot-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.ragab-bot-actions button{border:1px solid rgba(184,43,43,.45);background:rgba(184,43,43,.10);color:#eee;border-radius:999px;padding:8px 10px;font-size:10px;cursor:pointer}
+.ragab-bot-actions button:hover{background:rgba(184,43,43,.28)}
+.ragab-bot-input{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(255,255,255,.08)}
+.ragab-bot-input input{min-width:0;flex:1;border:1px solid rgba(255,255,255,.1);outline:none;border-radius:10px;background:#111;color:#fff;padding:10px;font:inherit;font-size:11px}
+.ragab-bot-input button{border:0;border-radius:10px;background:#b82b2b;color:#fff;padding:0 13px;cursor:pointer;font-size:10px}
+@media(max-width:600px){.ragab-bot{right:12px;bottom:12px}.ragab-bot-window{width:min(340px,calc(100vw - 24px));height:470px}}
