@@ -39,77 +39,69 @@
       identities: ["IDENTITIES","03 / BRANDING","Visual identities, logos, systems and brand applications."],
       manipulation: ["MANIPULATION","04 / ART DIRECTION","Photo manipulation, compositing and cinematic visual direction."]
     };
+
     const key = new URLSearchParams(location.search).get("cat") || "matchdays";
     const item = data[key] || data.matchdays;
+
     document.title = "RagabGFX — " + item[0];
     document.getElementById("category-kicker").textContent = item[1];
     document.getElementById("category-title").textContent = item[0];
     document.getElementById("category-desc").textContent = item[2];
+
     const grid = document.getElementById("sample-grid");
-    if (key === "hero-graphics") {
-      const heroImages = [
-        ["01-saudi-league.jpg", "Saudi League"],
-        ["02-basketball.png", "Dubai Basketball"],
-        ["03-neom-vs-alhilal.jpg", "NEOM vs Al Hilal"],
-        ["04-kings-cup.jpg", "King's Cup"],
-        ["05-ligue1-himad.jpg", "Ligue 1 — Himad Abdelli"],
-        ["06-ligue1-aguerd.jpg", "Ligue 1 — Nayef Aguerd"],
-        ["07-world-cup.jpg", "World Cup — Spain vs Saudi Arabia"],
-        ["08-mostafa-mohamed.jpg", "Mostafa Mohamed"],
-        ["09-aljazira.png", "Al Jazira — To The Final"],
-        ["10-rsl.png", "Saudi League — RSL"]
-      ];
-      grid.innerHTML = heroImages.map(([file, title]) => `
-        <article class="sample-card reveal is-visible">
-          <div class="sample-image-wrap"><img class="sample-image" src="assets/hero-graphics/${file}" alt="${title}" loading="lazy"></div>
-          <div class="sample-caption"><span>${title}</span><small>HERO GRAPHIC</small></div>
-        </article>`).join("");
-      document.getElementById("sample-count").textContent = "10 SAMPLES";
+    const count = document.getElementById("sample-count");
+
+    const works = {
+      matchdays: [
+        ["assets/matchdays/01-al-ahly-vs-palmeiras.webp", "Al Ahly vs Palmeiras", "MATCHDAY"],
+        ["assets/matchdays/02-al-ahly-vs-inter-miami.webp", "Al Ahly vs Inter Miami", "MATCHDAY"],
+        ["assets/matchdays/03-ettifaq.webp", "Ettifaq Matchday", "MATCHDAY"],
+        ["assets/matchdays/04-ligue-1-trophee-des-champions.webp", "Trophee des Champions", "MATCHDAY"],
+        ["assets/matchdays/05-jordan-vs-algeria.webp", "Jordan vs Algeria", "MATCHDAY"],
+        ["assets/matchdays/06-matchday.webp", "Matchday", "MATCHDAY"],
+        ["assets/matchdays/07-neom-vs-al-qadsiah.webp", "NEOM vs Al Qadsiah", "MATCHDAY"],
+        ["assets/matchdays/08-saudi-vs-uruguay.webp", "Saudi Arabia vs Uruguay", "MATCHDAY"],
+        ["assets/matchdays/09-psg-vs-marseille.webp", "PSG vs Marseille", "MATCHDAY"],
+        ["assets/matchdays/10-wijnaldum.webp", "Wijnaldum — To the Final", "MATCHDAY"]
+      ],
+      "hero-graphics": [
+        ["assets/hero-graphics/01-1080x1350.webp","Saudi League","HERO GRAPHIC"],
+        ["assets/hero-graphics/02-arakji-psd.webp","Basketball","HERO GRAPHIC"],
+        ["assets/hero-graphics/03-neom-vs-alhilal.webp","NEOM × Al Hilal","HERO GRAPHIC"],
+        ["assets/hero-graphics/04-kings-cup-final.webp","King's Cup","HERO GRAPHIC"],
+        ["assets/hero-graphics/05-himad-abdelli.webp","Ligue 1","HERO GRAPHIC"],
+        ["assets/hero-graphics/06-nayef-aguerd.webp","Ligue 1","PLAYER GRAPHIC"],
+        ["assets/hero-graphics/07-spain-vs-saudi.webp","World Cup","MATCHDAY GRAPHIC"],
+        ["assets/hero-graphics/08-mostafa-mohamed.webp","Mostafa Mohamed","HERO GRAPHIC"],
+        ["assets/hero-graphics/09-al-jazira.webp","Al Jazira","QUALIFICATION GRAPHIC"],
+        ["assets/hero-graphics/10-scorrer.webp","Saudi League","CONCEPT GRAPHIC"]
+      ]
+    };
+
+    const selected = works[key];
+
+    if (selected) {
+      grid.innerHTML = selected.map(([file, title, type], i) => `
+        <article class="sample-card reveal is-visible" tabindex="0" role="button" aria-label="Open ${title}">
+          <img class="sample-image" src="${file}" alt="${title}" loading="${i < 3 ? "eager" : "lazy"}">
+          <div class="sample-info">
+            <div>
+              <small>${type}</small>
+              <strong>${title}</strong>
+            </div>
+            <span class="sample-index">${String(i + 1).padStart(2, "0")}</span>
+          </div>
+        </article>
+      `).join("");
+      count.textContent = String(selected.length).padStart(2, "0") + " SELECTED WORKS";
     } else {
       grid.innerHTML = `
-        <div class="sample-placeholder"><strong>YOUR WORK GOES HERE</strong><span>Drop your images into the matching assets folder and duplicate a sample card in category.html.</span></div>
-        <div class="sample-placeholder"><strong>READY FOR YOUR PROJECTS</strong><span>The structure is already built for category-by-category samples.</span></div>
-        <div class="sample-placeholder"><strong>CASE STUDIES NEXT</strong><span>We can turn any sample into a full project page later.</span></div>`;
-      document.getElementById("sample-count").textContent = "03 PLACEHOLDERS";
+        <div class="sample-placeholder"><strong>YOUR WORK GOES HERE</strong><span>Drop your images into the matching assets folder and add them to the category list.</span></div>
+        <div class="sample-placeholder"><strong>READY FOR YOUR PROJECTS</strong><span>The category structure is ready for the next batch.</span></div>
+        <div class="sample-placeholder"><strong>CASE STUDIES NEXT</strong><span>We can turn any selected sample into a full project page later.</span></div>`;
+      count.textContent = "03 PLACEHOLDERS";
     }
   </script>
-
-<script>
-(function(){
-  const params = new URLSearchParams(location.search);
-  const cat = params.get('cat');
-  if(cat !== 'hero-graphics') return;
-
-  const grid = document.getElementById('sample-grid');
-  const count = document.getElementById('sample-count');
-  if(!grid) return;
-
-  const heroWorks = [
-    ['assets/hero-graphics/01-1080x1350.webp','Saudi League','Hero Graphic'],
-    ['assets/hero-graphics/02-arakji-psd.webp','Basketball','Hero Graphic'],
-    ['assets/hero-graphics/03-neom-vs-alhilal.webp','NEOM × Al Hilal','Hero Graphic'],
-    ['assets/hero-graphics/04-kings-cup-final.webp', "King's Cup",'Hero Graphic'],
-    ['assets/hero-graphics/05-himad-abdelli.webp','Ligue 1','Hero Graphic'],
-    ['assets/hero-graphics/06-nayef-aguerd.webp','Ligue 1','Player Graphic'],
-    ['assets/hero-graphics/07-spain-vs-saudi.webp','World Cup','Matchday Graphic'],
-    ['assets/hero-graphics/08-mostafa-mohamed.webp','Mostafa Mohamed','Hero Graphic'],
-    ['assets/hero-graphics/09-al-jazira.webp','Al Jazira','Qualification Graphic'],
-    ['assets/hero-graphics/10-scorrer.webp','Saudi League','Concept Graphic']
-  ];
-
-  grid.innerHTML = '';
-  heroWorks.forEach((w,i)=>{
-    const card=document.createElement('article');
-    card.className='sample-card reveal is-visible';
-    card.innerHTML =
-      '<img loading="'+(i<3?'eager':'lazy')+'" src="'+w[0]+'" alt="'+w[1]+'">'+
-      '<div class="sample-info"><div><small>'+w[2]+'</small><strong>'+w[1]+'</strong></div>'+
-      '<span class="sample-index">'+String(i+1).padStart(2,'0')+'</span></div>';
-    grid.appendChild(card);
-  });
-  if(count) count.textContent = String(heroWorks.length).padStart(2,'0') + ' SELECTED WORKS';
-})();
-</script>
 
 
 <div class="portfolio-lightbox" id="portfolioLightbox" aria-hidden="true">
