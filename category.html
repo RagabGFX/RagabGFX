@@ -42,7 +42,6 @@
 
     const key = new URLSearchParams(location.search).get("cat") || "matchdays";
     const item = data[key] || data.matchdays;
-
     document.title = "RagabGFX — " + item[0];
     document.getElementById("category-kicker").textContent = item[1];
     document.getElementById("category-title").textContent = item[0];
@@ -52,121 +51,79 @@
     const count = document.getElementById("sample-count");
 
     const works = {
-      matchdays: [
-        ["assets/matchdays/01-al-ahly-vs-palmeiras.webp", "Al Ahly vs Palmeiras", "MATCHDAY"],
-        ["assets/matchdays/02-al-ahly-vs-inter-miami.webp", "Al Ahly vs Inter Miami", "MATCHDAY"],
-        ["assets/matchdays/03-ettifaq.webp", "Ettifaq Matchday", "MATCHDAY"],
-        ["assets/matchdays/04-ligue-1-trophee-des-champions.webp", "Trophee des Champions", "MATCHDAY"],
-        ["assets/matchdays/05-jordan-vs-algeria.webp", "Jordan vs Algeria", "MATCHDAY"],
-        ["assets/matchdays/06-matchday.webp", "Matchday", "MATCHDAY"],
-        ["assets/matchdays/07-neom-vs-al-qadsiah.webp", "NEOM vs Al Qadsiah", "MATCHDAY"],
-        ["assets/matchdays/08-saudi-vs-uruguay.webp", "Saudi Arabia vs Uruguay", "MATCHDAY"],
-        ["assets/matchdays/09-psg-vs-marseille.webp", "PSG vs Marseille", "MATCHDAY"],
-        ["assets/matchdays/10-wijnaldum.webp", "Wijnaldum — To the Final", "MATCHDAY"]
-      ],
       "hero-graphics": [
-        ["assets/hero-graphics/01-1080x1350.webp","Saudi League","HERO GRAPHIC"],
-        ["assets/hero-graphics/02-arakji-psd.webp","Basketball","HERO GRAPHIC"],
-        ["assets/hero-graphics/03-neom-vs-alhilal.webp","NEOM × Al Hilal","HERO GRAPHIC"],
-        ["assets/hero-graphics/04-kings-cup-final.webp","King's Cup","HERO GRAPHIC"],
-        ["assets/hero-graphics/05-himad-abdelli.webp","Ligue 1","HERO GRAPHIC"],
-        ["assets/hero-graphics/06-nayef-aguerd.webp","Ligue 1","PLAYER GRAPHIC"],
-        ["assets/hero-graphics/07-spain-vs-saudi.webp","World Cup","MATCHDAY GRAPHIC"],
-        ["assets/hero-graphics/08-mostafa-mohamed.webp","Mostafa Mohamed","HERO GRAPHIC"],
-        ["assets/hero-graphics/09-al-jazira.webp","Al Jazira","QUALIFICATION GRAPHIC"],
-        ["assets/hero-graphics/10-scorrer.webp","Saudi League","CONCEPT GRAPHIC"]
+        ["assets/hero-graphics/01-saudi-league.webp", "Saudi League", "Hero Graphic"],
+        ["assets/hero-graphics/02-basketball.webp", "Dubai Basketball", "Hero Graphic"],
+        ["assets/hero-graphics/03-neom-vs-alhilal.webp", "NEOM × Al Hilal", "Hero Graphic"],
+        ["assets/hero-graphics/04-kings-cup.webp", "King's Cup", "Hero Graphic"],
+        ["assets/hero-graphics/05-ligue1-himad.webp", "Ligue 1 — Himad Abdelli", "Hero Graphic"],
+        ["assets/hero-graphics/06-ligue1-aguerd.webp", "Ligue 1 — Nayef Aguerd", "Player Graphic"],
+        ["assets/hero-graphics/07-world-cup.webp", "World Cup — Spain vs Saudi Arabia", "Matchday Graphic"],
+        ["assets/hero-graphics/08-mostafa-mohamed.webp", "Mostafa Mohamed", "Hero Graphic"],
+        ["assets/hero-graphics/09-aljazira.webp", "Al Jazira — To The Final", "Qualification Graphic"],
+        ["assets/hero-graphics/10-rsl.webp", "Saudi League — RSL", "Concept Graphic"]
+      ],
+      manipulation: [
+        ["assets/manipulation/al-jazira-training-camp.webp", "Al Jazira — Training Camp", "Photo Manipulation"],
+        ["assets/manipulation/devil-casemiro.webp", "Casemiro — Devil Concept", "Photo Manipulation"],
+        ["assets/manipulation/kings-cup-countdown.webp", "King's Cup — Countdown", "Photo Manipulation"],
+        ["assets/manipulation/ligue1-egypt-to-the-final.webp", "Ligue 1 — Egypt To The Final", "Photo Manipulation"],
+        ["assets/manipulation/ligue1-nabil-bentaleb-lyon.webp", "Nabil Bentaleb — Lyon", "Photo Manipulation"],
+        ["assets/manipulation/ligue1-new-year.webp", "Ligue 1 — New Year", "Photo Manipulation"],
+        ["assets/manipulation/ligue1-saudi-player-ramadan.webp", "Ligue 1 — Ramadan", "Photo Manipulation"],
+        ["assets/manipulation/ligue1-yassir-zabiri-rennes.webp", "Yassir Zabiri — Rennes", "Photo Manipulation"],
+        ["assets/manipulation/onana.webp", "Onana — Concept", "Photo Manipulation"],
+        ["assets/manipulation/salem-al-dawsari-50-goals.webp", "Salem Al-Dawsari — 50 Goals", "Photo Manipulation"],
+        ["assets/manipulation/saudi-nt-best-saudi-chant.webp", "Saudi NT — Best Saudi Chant", "Photo Manipulation"],
+        ["assets/manipulation/saudi-nt-next-mission-atlanta.webp", "Saudi NT — Next Mission Atlanta", "Photo Manipulation"],
+        ["assets/manipulation/neom-vs-al-fateh.webp", "NEOM vs Al Fateh", "Photo Manipulation"],
+        ["assets/manipulation/world-football-day.webp", "World Football Day", "Photo Manipulation"]
       ]
     };
 
     const selected = works[key];
-
     if (selected) {
-      grid.innerHTML = selected.map(([file, title, type], i) => `
-        <article class="sample-card reveal is-visible" tabindex="0" role="button" aria-label="Open ${title}">
-          <img class="sample-image" src="${file}" alt="${title}" loading="${i < 3 ? "eager" : "lazy"}">
-          <div class="sample-info">
-            <div>
-              <small>${type}</small>
-              <strong>${title}</strong>
-            </div>
-            <span class="sample-index">${String(i + 1).padStart(2, "0")}</span>
-          </div>
-        </article>
-      `).join("");
-      count.textContent = String(selected.length).padStart(2, "0") + " SELECTED WORKS";
+      grid.innerHTML = selected.map(([src, title, type], i) => `
+        <article class="sample-card reveal is-visible" data-full="${src}" data-title="${title}">
+          <div class="sample-image-wrap"><img class="sample-image" src="${src}" alt="${title}" loading="${i < 3 ? 'eager' : 'lazy'}"></div>
+          <div class="sample-info"><div><small>${type}</small><strong>${title}</strong></div><span class="sample-index">${String(i + 1).padStart(2,'0')}</span></div>
+        </article>`).join('');
+      count.textContent = String(selected.length).padStart(2,'0') + ' SELECTED WORKS';
     } else {
-      grid.innerHTML = `
-        <div class="sample-placeholder"><strong>YOUR WORK GOES HERE</strong><span>Drop your images into the matching assets folder and add them to the category list.</span></div>
-        <div class="sample-placeholder"><strong>READY FOR YOUR PROJECTS</strong><span>The category structure is ready for the next batch.</span></div>
-        <div class="sample-placeholder"><strong>CASE STUDIES NEXT</strong><span>We can turn any selected sample into a full project page later.</span></div>`;
-      count.textContent = "03 PLACEHOLDERS";
+      grid.innerHTML = '<div class="sample-placeholder"><strong>SELECTED WORK</strong><span>More projects will be added here.</span></div>';
+      count.textContent = '01 SELECTED WORK';
     }
+
+    // Fullscreen viewer — keeps the complete artwork visible without cropping.
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = `
+      <button class="lightbox-close" aria-label="Close fullscreen">×</button>
+      <div class="lightbox-inner">
+        <img class="lightbox-image" alt="">
+        <div class="lightbox-title"></div>
+      </div>`;
+    document.body.appendChild(lightbox);
+    const lbImage = lightbox.querySelector('.lightbox-image');
+    const lbTitle = lightbox.querySelector('.lightbox-title');
+
+    grid.addEventListener('click', (e) => {
+      const card = e.target.closest('.sample-card[data-full]');
+      if (!card) return;
+      lbImage.src = card.dataset.full;
+      lbImage.alt = card.dataset.title;
+      lbTitle.textContent = card.dataset.title;
+      lightbox.classList.add('is-open');
+      document.body.classList.add('lightbox-open');
+    });
+    const closeLightbox = () => {
+      lightbox.classList.remove('is-open');
+      document.body.classList.remove('lightbox-open');
+    };
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.closest('.lightbox-close')) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
   </script>
-
-
-<div class="portfolio-lightbox" id="portfolioLightbox" aria-hidden="true">
-  <button class="lb-close" id="lbClose" aria-label="Close">×</button>
-  <button class="lb-prev" id="lbPrev" aria-label="Previous">‹</button>
-  <img id="lbImage" alt="">
-  <button class="lb-next" id="lbNext" aria-label="Next">›</button>
-  <div class="lb-counter" id="lbCounter"></div>
-</div>
-<script>
-(function(){
-  const box=document.getElementById('portfolioLightbox');
-  const image=document.getElementById('lbImage');
-  const close=document.getElementById('lbClose');
-  const prev=document.getElementById('lbPrev');
-  const next=document.getElementById('lbNext');
-  const counter=document.getElementById('lbCounter');
-  if(!box) return;
-
-  let cards=[];
-  let index=0;
-
-  function refresh(){
-    cards=[...document.querySelectorAll('.sample-card')];
-  }
-  function open(i){
-    refresh();
-    if(!cards.length) return;
-    index=(i+cards.length)%cards.length;
-    const img=cards[index].querySelector('img');
-    image.src=img.currentSrc || img.src;
-    image.alt=img.alt || '';
-    counter.textContent=String(index+1).padStart(2,'0')+' / '+String(cards.length).padStart(2,'0');
-    box.classList.add('is-open');
-    box.setAttribute('aria-hidden','false');
-    document.body.style.overflow='hidden';
-  }
-  function shut(){
-    box.classList.remove('is-open');
-    box.setAttribute('aria-hidden','true');
-    image.removeAttribute('src');
-    document.body.style.overflow='';
-  }
-  function go(delta){open(index+delta)}
-
-  document.addEventListener('click',e=>{
-    const card=e.target.closest('.sample-card');
-    if(card){
-      e.preventDefault();
-      refresh();
-      open(cards.indexOf(card));
-    }
-  });
-  close.addEventListener('click',shut);
-  prev.addEventListener('click',()=>go(-1));
-  next.addEventListener('click',()=>go(1));
-  box.addEventListener('click',e=>{if(e.target===box) shut()});
-  document.addEventListener('keydown',e=>{
-    if(!box.classList.contains('is-open')) return;
-    if(e.key==='Escape') shut();
-    if(e.key==='ArrowLeft') go(-1);
-    if(e.key==='ArrowRight') go(1);
-  });
-})();
-</script>
-
 </body>
 </html>
