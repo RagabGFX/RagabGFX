@@ -1,132 +1,192 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RagabGFX — Graphic Designer</title>
-  <meta name="description" content="RagabGFX — sports, identity and visual design portfolio.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RagabGFX — Visuals That Move</title>
+<meta name="description" content="RagabGFX — graphic design for sports, identities, campaigns and high-impact digital visuals.">
+<link rel="stylesheet" href="rgx15.css">
 </head>
 <body>
-  <div class="noise"></div>
-  <div class="cursor-dot"></div>
-  <div class="cursor-ring"></div>
+<div class="rgx-page">
 
-  <header class="nav glass">
-    <a class="brand" href="index.html" aria-label="RagabGFX home">Ragab<span>GFX</span></a>
-    <nav>
-      <a href="#work">Work</a>
-      <a href="#clients">Clients</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="nav-cta" href="#contact">Let's talk <span>↗</span></a>
-  </header>
+<header class="rgx-nav">
+  <a class="rgx-brand" href="#top">Ragab<span>GFX</span></a>
+  <nav class="rgx-nav-links">
+    <a href="#work">Work</a><a href="#clients">Clients</a><a href="#about">About</a><a href="#contact">Contact</a>
+  </nav>
+  <a class="rgx-nav-cta" href="#contact">Let's talk ↗</a>
+</header>
 
-  <main>
-    <section class="hero" id="top">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">GRAPHIC DESIGNER / SPORTS & VISUALS</p>
-        <h1>Visuals<br><em>that move.</em></h1>
-        <p class="hero-text">I create bold visual systems, sports graphics and digital experiences built to be remembered.</p>
-        <a class="pill" href="#work">Explore selected work <span>↓</span></a>
-      </div>
-      <div class="hero-image-wrap reveal">
-        <div class="hero-aura"></div>
-        <img src="assets/hero-profile.webp" class="hero-image" alt="RagabGFX portrait artwork">
-        <div class="hero-glass"></div>
-      </div>
-      <div class="hero-meta">
-        <span>BASED IN EGYPT</span>
-        <span>AVAILABLE FOR SELECTED PROJECTS</span>
-      </div>
-    </section>
+<main id="top">
 
-    <section class="work section" id="work">
-      <div class="section-head reveal">
-        <div>
-          <p class="eyebrow">SELECTED WORK</p>
-          <h2>Built for <span>impact.</span></h2>
-        </div>
-        <p class="section-note">Four directions. One visual language.</p>
-      </div>
+  <section class="rgx-hero">
+    <canvas class="rgx-hero-fluid" id="rgxFluid" aria-hidden="true"></canvas>
+    <div class="rgx-hero-glow"></div>
+    <img class="rgx-hero-photo" src="assets/rgx15/hero-profile.png" alt="Mohamed Ragab"/>
+    <p class="rgx-eyebrow rgx-intro">Graphic Designer <b>/</b> Sports &amp; Visuals</p>
+    <h1 class="rgx-intro d1">Visuals<br/><span class="rgx-stroke">that</span> <span class="rgx-red">move.</span></h1>
+    <div class="rgx-hero-actions rgx-intro d2">
+      <a class="rgx-btn rgx-btn-red" href="#work">See the work ↓</a>
+    </div>
+  </section>
 
-      <div class="category-grid">
-        <a class="category-card card-tall reveal" href="category.html?cat=matchdays">
-          <div class="card-bg" style="background-image:url('assets/covers/matchdays.webp')"></div>
-          <div class="ghost-word">MATCH</div>
-          <div class="card-content"><small>01 / SPORTS</small><h3>MATCHDAYS</h3><span>View samples ↗</span></div>
-        </a>
-        <a class="category-card reveal" href="category.html?cat=hero-graphics">
-          <div class="card-bg" style="background-image:url('assets/covers/hero-graphics.webp')"></div>
-          <div class="ghost-word">HERO</div>
-          <div class="card-content"><small>02 / VISUALS</small><h3>HERO<br>GRAPHICS</h3><span>View samples ↗</span></div>
-        </a>
-        <a class="category-card reveal" href="category.html?cat=identities">
-          <div class="card-bg" style="background-image:url('assets/covers/identities.webp')"></div>
-          <div class="ghost-word">ID</div>
-          <div class="card-content"><small>03 / BRANDING</small><h3>IDENTITIES</h3><span>View samples ↗</span></div>
-        </a>
-        <a class="category-card card-wide reveal" href="category.html?cat=manipulation">
-          <div class="card-bg" style="background-image:url('assets/covers/manipulation.webp')"></div>
-          <div class="ghost-word">MANIP</div>
-          <div class="card-content"><small>04 / ART DIRECTION</small><h3>MANIPULATION</h3><span>View samples ↗</span></div>
-        </a>
-      </div>
-    </section>
+  <div class="rgx-marquee"><div class="rgx-marquee-track">
+    <span>Matchdays ✦ Hero Graphics ✦ Campaigns ✦ Manipulation ✦ Sports Visuals ✦ </span><span>Matchdays ✦ Hero Graphics ✦ Campaigns ✦ Manipulation ✦ Sports Visuals ✦ </span>
+  </div></div>
 
-    <section class="clients section" id="clients">
-      <div class="section-head reveal">
-        <div>
-          <p class="eyebrow">SELECTED CLIENTS</p>
-          <h2>Trusted by <span>teams.</span></h2>
-        </div>
-        <p class="section-note">A selection of clubs, federations, leagues and sports brands.</p>
-      </div>
-      <div class="clients-panel glass reveal">
-        <img src="assets/clients.webp" alt="Selected clients and sports brands">
-      </div>
-    </section>
+  <section class="rgx-boards" aria-label="Selected pieces in motion">
+    <div class="rgx-boards-row"><div class="rgx-boards-track">
+      <a class="rgx-board" href="category.html?cat=identities"><img src="assets/rgx15/kings-cup-oneday.jpg" alt="King's Cup one day to go"/></a>
+      <a class="rgx-board" href="category.html?cat=matchdays"><img src="assets/rgx15/neom-matchday.jpg" alt="NEOM S.C. Founding Day matchday"/></a>
+      <a class="rgx-board" href="category.html?cat=identities"><img src="assets/rgx15/asia-2027-tickets.jpg" alt="AFC Asian Cup 2027 ticket campaign"/></a>
+      <a class="rgx-board" href="category.html?cat=hero-graphics"><img src="assets/rgx15/dbc-mvp.jpg" alt="Dubai Basketball MVP graphic"/></a>
+      <a class="rgx-board" href="category.html?cat=hero-graphics"><img src="assets/rgx15/aljazira-thankyou.jpg" alt="Al Jazira Club thank you collage"/></a>
+      <a class="rgx-board" href="category.html?cat=identities" aria-hidden="true" tabindex="-1"><img src="assets/rgx15/kings-cup-oneday.jpg" alt=""/></a>
+      <a class="rgx-board" href="category.html?cat=matchdays" aria-hidden="true" tabindex="-1"><img src="assets/rgx15/neom-matchday.jpg" alt=""/></a>
+      <a class="rgx-board" href="category.html?cat=identities" aria-hidden="true" tabindex="-1"><img src="assets/rgx15/asia-2027-tickets.jpg" alt=""/></a>
+      <a class="rgx-board" href="category.html?cat=hero-graphics" aria-hidden="true" tabindex="-1"><img src="assets/rgx15/dbc-mvp.jpg" alt=""/></a>
+      <a class="rgx-board" href="category.html?cat=hero-graphics" aria-hidden="true" tabindex="-1"><img src="assets/rgx15/aljazira-thankyou.jpg" alt=""/></a>
+    </div></div>
+    <div class="rgx-boards-row"><div class="rgx-boards-track rgx-boards-rev">
+      <a class="rgx-board" href="category.html?cat=identities"><img src="assets/rgx15/saff-jeddah-finals.jpg" alt="AFC Elite Finals Jeddah 2026"/></a>
+      <a class="rgx-board" href="category.html?cat=matchdays"><img src="assets/rgx15/03-ettifaq.jpg" alt="Ettifaq Matchday"/></a>
+      <a class="rgx-board" href="category.html?cat=identities"><img src="assets/rgx15/archery-hawi.jpg" alt="Saudi Archery Federation Hawi campaign"/></a>
+      <a class="rgx-board" href="category.html?cat=matchdays"><img src="assets/rgx15/next-match.jpg" alt="NEOM S.C. next match announcement"/></a>
+      <a class="rgx-board" href="category.html?cat=identities"><img src="assets/rgx15/super-cup-countdown.jpg" alt="Saudi Super Cup countdown Hong Kong"/></a>
+      <a class="rgx-board" href="category.html?cat=identities" aria-hidden="true" tabindex="-1"><img src="assets/rgx15/saff-jeddah-finals.jpg" alt=""/></a>
+      <a class="rgx-board" href="category.html?cat=matchdays" aria-hidden="true" tabindex="-1"><img src="assets/rgx15/03-ettifaq.jpg" alt=""/></a>
+      <a class="rgx-board" href="category.html?cat=identities" aria-hidden="true" tabindex="-1"><img src="assets/rgx15/archery-hawi.jpg" alt=""/></a>
+      <a class="rgx-board" href="category.html?cat=matchdays" aria-hidden="true" tabindex="-1"><img src="assets/rgx15/next-match.jpg" alt=""/></a>
+      <a class="rgx-board" href="category.html?cat=identities" aria-hidden="true" tabindex="-1"><img src="assets/rgx15/super-cup-countdown.jpg" alt=""/></a>
+    </div></div>
+  </section>
 
-    <section class="about section" id="about">
-      <div class="about-grid">
-        <div class="reveal">
-          <p class="eyebrow">ABOUT</p>
-          <h2>Design with a<br><span>competitive edge.</span></h2>
-        </div>
-        <div class="about-copy reveal">
-          <p>RagabGFX is a graphic design practice focused on sports, identities, campaigns and high-impact digital visuals.</p>
-          <p>I care about strong concepts, clean systems and details that make a visual feel finished rather than simply decorated.</p>
-        </div>
+  <section id="work">
+    <div class="rgx-sec-head rgx-reveal">
+      <h2>Built for<br/><span class="rgx-red">impact.</span></h2>
+    </div>
+    <div class="rgx-work-grid">
+      <a class="rgx-card rgx-wide rgx-reveal" href="category.html?cat=identities">
+        <img src="assets/rgx15/asia-2027-tickets.jpg" alt="AFC Asian Cup 2027 ticket campaign"/>
+        <div class="rgx-card-info"><div><strong>AFC Asian Cup 2027 — Tickets</strong></div></div>
+      </a>
+      <a class="rgx-card rgx-reveal" href="category.html?cat=identities">
+        <img src="assets/rgx15/kings-cup-oneday.jpg" alt="King's Cup one day to go"/>
+        <div class="rgx-card-info"><div><strong>King's Cup — One Day To Go</strong></div></div>
+      </a>
+      <a class="rgx-card rgx-reveal" href="category.html?cat=identities">
+        <img src="assets/rgx15/kings-cup-5days.jpg" alt="King's Cup five days to go"/>
+        <div class="rgx-card-info"><div><strong>King's Cup — 5 Days To Go</strong></div></div>
+      </a>
+      <a class="rgx-card rgx-reveal" href="category.html?cat=identities">
+        <img src="assets/rgx15/kings-cup-13.jpg" alt="King's Cup players artwork"/>
+        <div class="rgx-card-info"><div><strong>King's Cup — Countdown Series</strong></div></div>
+      </a>
+      <a class="rgx-card rgx-reveal" href="category.html?cat=hero-graphics">
+        <img src="assets/rgx15/dbc-mvp.jpg" alt="Dubai Basketball MVP graphic"/>
+        <div class="rgx-card-info"><div><strong>Dubai Basketball — MVP</strong></div></div>
+      </a>
+      <a class="rgx-card rgx-reveal" href="category.html?cat=matchdays">
+        <img src="assets/rgx15/neom-matchday.jpg" alt="NEOM S.C. Founding Day matchday"/>
+        <div class="rgx-card-info"><div><strong>NEOM S.C. — Founding Day</strong></div></div>
+      </a>
+      <a class="rgx-card rgx-reveal" href="category.html?cat=matchdays">
+        <img src="assets/rgx15/neom-lineup.jpg" alt="NEOM S.C. match lineup"/>
+        <div class="rgx-card-info"><div><strong>NEOM S.C. — Match Lineup</strong></div></div>
+      </a>
+      <a class="rgx-card rgx-reveal" href="category.html?cat=matchdays">
+        <img src="assets/rgx15/next-match.jpg" alt="NEOM S.C. next match announcement"/>
+        <div class="rgx-card-info"><div><strong>NEOM S.C. — Next Match</strong></div></div>
+      </a>
+      <a class="rgx-card rgx-reveal" href="category.html?cat=identities">
+        <img src="assets/rgx15/saff-jeddah-finals.jpg" alt="AFC Elite Finals Jeddah 2026"/>
+        <div class="rgx-card-info"><div><strong>SAFF × AFC — Finals Jeddah</strong></div></div>
+      </a>
+      <a class="rgx-card rgx-reveal" href="category.html?cat=identities">
+        <img src="assets/rgx15/afc-elite-countdown.jpg" alt="AFC Champions League Elite one day countdown"/>
+        <div class="rgx-card-info"><div><strong>AFC Elite — One Day To Go</strong></div></div>
+      </a>
+      <a class="rgx-card rgx-reveal" href="category.html?cat=identities">
+        <img src="assets/rgx15/super-cup-countdown.jpg" alt="Saudi Super Cup countdown Hong Kong"/>
+        <div class="rgx-card-info"><div><strong>Super Cup — 30 Days, Hong Kong</strong></div></div>
+      </a>
+      <a class="rgx-card rgx-reveal" href="category.html?cat=identities">
+        <img src="assets/rgx15/archery-hawi.jpg" alt="Saudi Archery Federation Hawi campaign"/>
+        <div class="rgx-card-info"><div><strong>Saudi Archery × Hawi</strong></div></div>
+      </a>
+      <a class="rgx-card rgx-reveal" href="category.html?cat=identities">
+        <img src="assets/rgx15/archery-hawi-2.jpg" alt="Saudi Archery Federation Hawi second concept"/>
+        <div class="rgx-card-info"><div><strong>Saudi Archery × Hawi — Concept 02</strong></div></div>
+      </a>
+      <a class="rgx-card rgx-reveal" href="category.html?cat=hero-graphics">
+        <img src="assets/rgx15/aljazira-thankyou.jpg" alt="Al Jazira Club thank you collage"/>
+        <div class="rgx-card-info"><div><strong>Al Jazira — Thank You</strong></div></div>
+      </a>
+      <a class="rgx-card rgx-reveal" href="category.html?cat=matchdays">
+        <img src="assets/rgx15/01-al-ahly-vs-palmeiras.jpg" alt="Al Ahly vs Palmeiras"/>
+        <div class="rgx-card-info"><div><strong>Al Ahly vs Palmeiras</strong></div></div>
+      </a>
+      <a class="rgx-card rgx-reveal" href="category.html?cat=matchdays">
+        <img src="assets/rgx15/03-ettifaq.jpg" alt="Ettifaq Matchday"/>
+        <div class="rgx-card-info"><div><strong>Ettifaq Matchday</strong></div></div>
+      </a>
+      <a class="rgx-card rgx-reveal" href="category.html?cat=identities">
+        <img src="assets/rgx15/founding-day-story.jpg" alt="Saudi Founding Day Our Story"/>
+        <div class="rgx-card-info"><div><strong>Founding Day — Our Story</strong></div></div>
+      </a>
+    </div>
+    <!-- These deep gallery routes carry the full archive; keep category.html and the assets/ folders in the repo so these links never self-loop. -->
+    <div class="rgx-work-more rgx-reveal" id="explore">
+      <p class="rgx-work-more-label">Explore more work</p>
+      <div class="rgx-work-more-links">
+        <a class="rgx-btn rgx-btn-ghost" href="category.html?cat=matchdays">Matchdays ↗</a>
+        <a class="rgx-btn rgx-btn-ghost" href="category.html?cat=hero-graphics">Hero graphics ↗</a>
+        <a class="rgx-btn rgx-btn-ghost" href="category.html?cat=identities">Identities ↗</a>
+        <a class="rgx-btn rgx-btn-ghost" href="category.html?cat=manipulation">Manipulation ↗</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="contact section" id="contact">
-      <div class="contact-card glass reveal">
-        <p class="eyebrow">CONTACT</p>
-        <h2>Let's make something<br><span>worth scrolling for.</span></h2>
-        <div class="contact-row">
-          <a href="#top">Available for selected projects ↗</a>
-          <div class="socials" aria-label="Social links">
-            <a href="https://www.linkedin.com/in/mohamed-ragab-648a1a21b/" target="_blank" rel="noopener" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24"><path d="M5.2 3.5A2.2 2.2 0 1 1 5.2 7.9 2.2 2.2 0 0 1 5.2 3.5ZM3.4 9h3.6v11.6H3.4V9Zm5.8 0h3.4v1.6h.1c.5-.9 1.7-2 3.5-2 3.8 0 4.5 2.5 4.5 5.7v6.3h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9v5.7H9.2V9Z"/></svg>
-            </a>
-            <a href="https://www.facebook.com/MaDoPH/" target="_blank" rel="noopener" aria-label="Facebook">
-              <svg viewBox="0 0 24 24"><path d="M14 8h2.4V4.6c-.4-.1-1.6-.2-3-.2-3 0-5 1.8-5 5.1v2.8H5v3.8h3.4v9.5h4.2v-9.5h3.4l.5-3.8h-3.9V9.8c0-1.1.3-1.8 1.4-1.8Z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/mohamed_ragabgfx/" target="_blank" rel="noopener" aria-label="Instagram">
-              <svg viewBox="0 0 24 24"><path d="M7.2 2.7h9.6A4.5 4.5 0 0 1 21.3 7.2v9.6a4.5 4.5 0 0 1-4.5 4.5H7.2a4.5 4.5 0 0 1-4.5-4.5V7.2a4.5 4.5 0 0 1 4.5-4.5Zm0 2A2.5 2.5 0 0 0 4.7 7.2v9.6a2.5 2.5 0 0 0 2.5 2.5h9.6a2.5 2.5 0 0 0 2.5-2.5V7.2a2.5 2.5 0 0 0-2.5-2.5H7.2Zm4.8 2.2A5.1 5.1 0 1 1 6.9 12a5.1 5.1 0 0 1 5.1-5.1Zm0 2A3.1 3.1 0 1 0 15.1 12a3.1 3.1 0 0 0-3.1-3.1Zm5.5-2.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z"/></svg>
-            </a>
-          </div>
-        </div>
+  <section id="clients">
+    <div class="rgx-sec-head rgx-reveal">
+      <h2>Selected<br/><span class="rgx-red">clients.</span></h2>
+    </div>
+    <div class="rgx-clients-card rgx-reveal"><img src="assets/rgx15/clients.jpg" alt="Serie A, FIFA, NBA, Roshn Saudi League, Ligue 1, Ettifaq and more"/></div>
+  </section>
+
+  <section id="about">
+    <div class="rgx-about">
+      <div class="rgx-about-photo rgx-reveal"><img src="assets/rgx15/02-al-ahly-vs-inter-miami.jpg" alt="Al Ahly vs Inter Miami artwork"/></div>
+      <div class="rgx-reveal">
+        <p class="rgx-eyebrow">About</p>
+        <h2>Design with a<br/><span class="rgx-red">competitive edge.</span></h2>
+        <p>RagabGFX is a graphic design practice focused on sports, identities, campaigns and high-impact digital visuals.</p>
+        <p>Strong concepts, clean systems and details that make a visual feel finished rather than simply decorated.</p>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer><span>© 2026 RagabGFX</span><span>Designed to move.</span></footer>
-  <script src="script.js"></script>
+  <section class="rgx-contact" id="contact">
+    <div class="rgx-glow"></div>
+    <h2 class="rgx-reveal">Let's make<br/><span class="rgx-red">noise.</span></h2>
+    <p class="rgx-reveal">Available for selected projects. One message is all it takes — pick a channel and the conversation starts today.</p>
+    <div class="rgx-socials rgx-reveal">
+      <a class="rgx-social" target="_blank" rel="noreferrer noopener" href="https://www.instagram.com/mohamed_ragabgfx/">Instagram ↗</a>
+      <a class="rgx-social" target="_blank" rel="noreferrer noopener" href="https://www.linkedin.com/in/mohamed-ragab-648a1a21b/">LinkedIn ↗</a>
+      <a class="rgx-social" target="_blank" rel="noreferrer noopener" href="https://www.facebook.com/MaDoPH/">Facebook ↗</a>
+      <a class="rgx-social" target="_blank" rel="noreferrer noopener" href="https://wa.me/201016029558"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>WhatsApp ↗</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 RagabGFX</span>
+  <span>Sports visuals &amp; design</span>
+  <span>Designed to move.</span>
+</footer>
+
+</div>
+<script src="rgx15.js"></script>
 </body>
 </html>
