@@ -1,237 +1,217 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RagabGFX — Visuals That Move | Mohamed Ragab, Sports Graphic Designer</title>
-<meta name="description" content="RagabGFX — Mohamed Ragab, graphic designer for sports, identities, campaigns and high-impact digital visuals. 2000+ projects across matchdays, hero graphics, identities and manipulation. Based in Egypt, working across Saudi Arabia and the Gulf.">
-<meta property="og:title" content="RagabGFX — Visuals That Move">
-<meta property="og:description" content="Sports visuals by Mohamed Ragab. 2000+ projects, 17 clients &amp; competitions. Hover any work to see the story behind it.">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#0B0B0C">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="rgx-new.css">
+<title>RAGABGFX — Mohamed Ragab · Sports Graphic Designer</title>
+<meta name="description" content="Mohamed Ragab — sports graphic designer. Matchday graphics, hero posters, identities, manipulation. 2000+ projects. Alexandria, Egypt.">
+<link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600..800&display=swap" rel="stylesheet">
 </head>
-<body class="loading">
-<!-- INTRO — branded preloader, solid bg, ~1s, click / Esc to skip -->
-<div class="intro" id="intro" role="status" aria-label="RagabGFX loading">
-  <div class="intro-logo" aria-hidden="true"><span>R</span><span>A</span><span>G</span><span>A</span><span>B</span><span>G</span><span>F</span><span>X</span></div>
-  <div class="intro-bar" aria-hidden="true"><i></i></div>
-  <p class="intro-tag">Visuals that move</p>
-  <button class="intro-skip" id="introSkip" type="button">Skip →</button>
+<body>
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <div class="preloader__mark">RAGAB<span>GFX</span></div>
+    <div class="preloader__count"><span id="preCount">000</span><i>%</i></div>
+    <div class="preloader__bar"><i id="preBar"></i></div>
+  </div>
 </div>
-<!-- Clean solid backgrounds only. No background photos anywhere.
-     The only texture is a 4% grain overlay + thin lines. -->
-<div class="grain" aria-hidden="true"></div>
-<div class="progress" id="progress" aria-hidden="true"></div>
 
-<!-- Broadcast scorebug: live, bottom-right -->
-<div class="scorebug" aria-hidden="true"><span class="dot"></span><span>RAGAB<b>GFX</b></span><span>· 44 WORKS · LIVE</span></div>
-
-<header class="nav" id="nav">
-  <a class="brand" href="#top">Ragab<em>GFX</em></a>
-  <nav class="nav-links" aria-label="Main">
-    <a href="#work">Work</a><a href="#clients">Clients</a><a href="#about">About</a><a href="#contact">Contact</a>
+<!-- ============ HEADER ============ -->
+<header class="site-head" id="siteHead">
+  <a class="brand" href="#top">RAGAB<span>GFX</span><i>®</i></a>
+  <div class="head-meta">
+    <span class="head-meta__place">ALEXANDRIA, EG — 31.2001° N / 29.9187° E</span>
+    <span class="head-meta__clock"><i class="dot-live"></i><span id="clock">00:00:00</span> <span id="tzLabel">EET</span></span>
+  </div>
+  <nav class="pill-nav" aria-label="Sections">
+    <a href="#work">Work</a>
+    <a href="#formation">Line-up</a>
+    <a href="#clients">Clients</a>
+    <a href="#process">Process</a>
   </nav>
-  <a class="btn btn-red btn-magnetic" href="#contact">Let's talk <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+  <a class="btn btn--red btn--sm" href="#contact">Let&rsquo;s talk ↗</a>
 </header>
-
-<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-  <a class="big" href="#work">Work <i>↗</i></a>
-  <a class="big" href="#featured">Featured <i>↗</i></a>
-  <a class="big" href="#clients">Clients <i>↗</i></a>
-  <a class="big" href="#about">About <i>↗</i></a>
-  <a class="big" href="#contact">Contact <i>↗</i></a>
-  <p class="m-foot">Mohamed Ragab — Sports visuals.<br><a href="https://wa.me/201016029558">WhatsApp +20 101 602 9558</a> · <a href="https://www.instagram.com/mohamed_ragabgfx/">Instagram</a></p>
-</div>
 
 <main id="top">
 
   <!-- ============ HERO ============ -->
-  <section class="hero" aria-label="Introduction">
-    <div class="hero-bg" aria-hidden="true"><div class="hero-grid-lines"></div></div>
-    <div class="hero-portrait-wrap" aria-hidden="true">
-      <img class="hero-portrait" id="heroPortrait" src="assets/rgx15/hero-profile.png" alt="" fetchpriority="high" decoding="async">
-    </div>
-    <div class="wrap hero-inner">
-      <div class="hero-kicker">
-        <span class="badge"><span class="live"></span> Available for selected projects — 2026</span>
-        <span class="badge">Mohamed Ragab — Graphic Designer / Sports &amp; Visuals</span>
-      </div>
-      <h1 class="hero-title" aria-label="Visuals that move.">
-        <span class="line"><span>Visuals</span></span>
-        <span class="line"><span><span class="stroke">that</span></span></span>
-        <span class="line"><span><span class="move">move.</span></span></span>
-      </h1>
-      <div class="hero-sub">
-        <p><strong>Sports visuals with a competitive edge.</strong> Matchdays, hero graphics, identities and manipulation — built for clubs, leagues and tournaments across Saudi Arabia and the Gulf.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-red btn-magnetic" href="#work">See the work ↓</a>
-          <a class="btn btn-ghost" href="#contact">Let's talk ↗</a>
+  <section class="hero">
+    <div class="hero__panel">
+      <div class="hero__top">
+        <div class="hero__copy">
+          <p class="eyebrow"><span class="dot-live"></span> Open for selected projects — Season 2026/27</p>
+          <h1 class="hero__title">
+            <span class="t-line">VISUALS</span>
+            <span class="t-line t-line--serif">that <em>move.</em></span>
+          </h1>
+          <p class="hero__sub">I&rsquo;m <strong>Mohamed Ragab</strong> — a sports graphic designer from Alexandria, Egypt. Matchday posters, hero graphics, identities and manipulation for clubs and tournaments across the Gulf and beyond.</p>
+          <div class="hero__cta">
+            <a class="btn btn--red" href="#work">See the work ↓</a>
+            <a class="btn btn--ghost" href="https://wa.me/201016029558" target="_blank" rel="noopener">WhatsApp me</a>
+          </div>
         </div>
+        <figure class="hero__portrait">
+          <img src="assets/rgx15/hero-profile.png" alt="Mohamed Ragab" width="880" height="880">
+          <figcaption><span class="fig-num">Nº 10</span> Mohamed Ragab — Playmaker</figcaption>
+          <span class="asterisk" aria-hidden="true">✳</span>
+        </figure>
       </div>
-      <div class="stat-strip" role="list">
-        <div role="listitem"><b>2000<i> +</i></b><span>Projects</span></div>
-        <div role="listitem"><b>17<i> +</i></b><span>Clients &amp; competitions</span></div>
-        <div role="listitem"><b>04<i> /</i></b><span>Categories — Matchdays · Heroes · Identities · Manipulation</span></div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Broadcast ticker: text only, pauses on hover -->
-  <div class="ticker" aria-hidden="true"><div class="ticker-track">
-    <span>Matchdays ✦ Hero Graphics ✦ Campaigns ✦ Manipulation ✦ Sports Visuals ✦ NEOM ✦ King's Cup ✦ </span><span>Matchdays ✦ Hero Graphics ✦ Campaigns ✦ Manipulation ✦ Sports Visuals ✦ NEOM ✦ King's Cup ✦ </span>
-  </div></div>
-
-  <!-- ============ FEATURED ============ -->
-  <section id="featured">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div><p class="eyebrow"><span class="n">01 /</span> Featured</p><h2>Chosen,<br><span class="red">not random.</span></h2></div>
-        <p>Three works that show the range — a tournament ticket campaign, a big-club clash, and a Club World Cup face-off. Hover any card to see the story.</p>
-        <span class="big-num">0<b>3</b></span>
-      </div>
-      <div class="featured-grid" id="featuredGrid"><!-- rendered by rgx-new.js --></div>
-    </div>
-  </section>
-
-  <hr class="cut">
-
-  <!-- ============ WORK — all 44, filterable ============ -->
-  <section id="work" class="slash">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div><p class="eyebrow"><span class="n">02 /</span> The work</p><h2>Built for<br><span class="red">impact.</span></h2></div>
-        <p>Every work, on one page. Filter by category — or hover any card and the hologram tells you the idea behind it.</p>
-        <span class="big-num">4<b>4</b></span>
-      </div>
-      <div class="filters reveal" role="group" aria-label="Filter work by category">
-        <button class="filter-btn" data-filter="all" aria-pressed="true"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>All <b>44</b></button>
-        <button class="filter-btn" data-filter="matchdays" aria-pressed="false"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><circle cx="12" cy="15" r="2.5"/></svg>Matchdays <b>10</b></button>
-        <button class="filter-btn" data-filter="hero-graphics" aria-pressed="false"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6-5.4-2.9L6.6 19.7l1.1-6L3.2 9.4l6.1-.8z"/></svg>Hero Graphics <b>10</b></button>
-        <button class="filter-btn" data-filter="identities" aria-pressed="false"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg>Identities <b>10</b></button>
-        <button class="filter-btn" data-filter="manipulation" aria-pressed="false"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20L14 10M14 4l6 6M13 7l4 4M6 14l3 3"/></svg>Manipulation <b>14</b></button>
-        <span class="tab-indicator" id="tabIndicator" aria-hidden="true"></span>
-        <span class="work-count" id="workCount">Showing <b>44</b> / 44 works</span>
-      </div>
-      <div class="work-grid" id="workGrid"><!-- rendered by rgx-new.js — all 44 works --></div>
-      <noscript><p style="margin-top:24px;color:#C9C9C9">This portfolio needs JavaScript to show the 44 works. Please enable JavaScript — the images live in assets/ in the repo.</p></noscript>
-    </div>
-  </section>
-
-  <!-- ============ CLIENTS: text wall, not a flat JPG ============ -->
-  <section id="clients">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div><p class="eyebrow"><span class="n">03 /</span> Selected clients</p><h2>Trusted<br><span class="red">on big stages.</span></h2></div>
-        <p>Clubs, leagues, federations and tournaments — from Jeddah to Dubai, Riyadh to Cairo.</p>
-        <span class="big-num">1<b>7</b></span>
-      </div>
-      <div class="clients-wall reveal">
-        <div class="client-cell">Serie A<small>Italy</small></div>
-        <div class="client-cell">FIFA Club World Cup<small>Saudi 2023</small></div>
-        <div class="client-cell">NBA<small>Basketball</small></div>
-        <div class="client-cell">Roshn Saudi League<small>Saudi Arabia</small></div>
-        <div class="client-cell">Ligue 1<small>France</small></div>
-        <div class="client-cell">PIF<small>Saudi Arabia</small></div>
-        <div class="client-cell">Saudi Super Cup<small>Saudi Arabia</small></div>
-        <div class="client-cell">The Best FIFA<small>FIFA</small></div>
-        <div class="client-cell">President's Cup<small>UAE</small></div>
-        <div class="client-cell">PIF Saudi International<small>Golf</small></div>
-        <div class="client-cell">Al Ettifaq<small>Saudi Arabia</small></div>
-        <div class="client-cell">Saudi Founding Day<small>Saudi Arabia</small></div>
-        <div class="client-cell">NEOM S.C.<small>Saudi Arabia</small></div>
-        <div class="client-cell">Al Jazira<small>UAE</small></div>
-        <div class="client-cell">Saudi Archery Federation<small>Saudi Arabia</small></div>
-        <div class="client-cell">Dubai Basketball<small>UAE</small></div>
-        <div class="client-cell">AFC Asian Cup 2027<small>Saudi Arabia</small></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ABOUT ============ -->
-  <section id="about" class="slash">
-    <div class="wrap about-grid">
-      <div class="about-photo reveal">
-        <img src="assets/rgx15/02-al-ahly-vs-inter-miami.jpg" alt="Al Ahly vs Inter Miami artwork by Mohamed Ragab" loading="lazy" decoding="async" width="800" height="920">
-      </div>
-      <div class="about-copy reveal" data-delay="1">
-        <p class="eyebrow"><span class="n">04 /</span> About</p>
-        <h2>Design with a<br><span class="red">competitive edge.</span></h2>
-        <p>I'm <strong>Mohamed Ragab</strong> — a graphic designer based in Egypt, working across Saudi Arabia and the Gulf for clubs, leagues and tournaments. I work at Sport360 agency, where matchdays move fast and every post has to land.</p>
-        <p>RagabGFX is my practice for sports, identities, campaigns and high-impact digital visuals. Strong concepts, clean systems, and details that make a visual feel finished rather than simply decorated.</p>
-        <div class="services">
-          <div class="service"><b><i>01</i> Matchday</b><span>Fixtures, line-ups, countdowns and live visuals.</span></div>
-          <div class="service"><b><i>02</i> Identity</b><span>Logos, systems and campaign identities.</span></div>
-          <div class="service"><b><i>03</i> Campaign</b><span>Ticket launches, finals and big moments.</span></div>
-          <div class="service"><b><i>04</i> Manipulation</b><span>Compositing and cinematic photo direction.</span></div>
+      <!-- season stats collage -->
+      <div class="stats" aria-label="Season stats">
+        <div class="stat stat--donut">
+          <div class="donut" style="--p:100">
+            <svg viewBox="0 0 100 100"><circle class="donut__track" cx="50" cy="50" r="42"/><circle class="donut__fill" cx="50" cy="50" r="42"/></svg>
+            <span class="donut__val">44</span>
+          </div>
+          <div class="stat__txt"><b>Selected works</b><span>on this page — every one shipped live</span></div>
         </div>
-        <div class="process">
-          <div><span class="step">01</span><div><b>Brief — what must it say?</b><span>One clear message, one audience, one moment.</span></div></div>
-          <div><span class="step">02</span><div><b>Concept — how does it feel?</b><span>The idea first, then the type, colour and crop.</span></div></div>
-          <div><span class="step">03</span><div><b>Finish — does it move?</b><span>Details, hierarchy and a final check at phone size.</span></div></div>
+        <div class="stat stat--bar">
+          <div class="stat__big">2000<span>+</span></div>
+          <div class="stat__txt"><b>Projects delivered</b><span>matchdays, campaigns, kits &amp; more</span></div>
+          <div class="meter"><i style="--w:92%"></i></div>
+          <span class="stat__note">92% — delivered on deadline</span>
+        </div>
+        <div class="stat stat--num">
+          <div class="stat__big">17</div>
+          <div class="stat__txt"><b>Clients</b><span>clubs, leagues &amp; tournaments — mainly the Gulf</span></div>
+          <div class="stat__chips"><span>AFC</span><span>SPL</span><span>CAF</span><span>+14</span></div>
         </div>
       </div>
     </div>
+
+    <!-- ticker -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track" id="tickerTrack">
+        <span>Matchdays</span><i>✦</i><span>Hero Graphics</span><i>✦</i><span>Identities</span><i>✦</i><span>Manipulation</span><i>✦</i><span>Campaigns</span><i>✦</i><span>Countdowns</span><i>✦</i><span>Ticket Launches</span><i>✦</i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORK ============ -->
+  <section class="work" id="work">
+    <div class="section-head">
+      <p class="eyebrow eyebrow--dark">01 — The programme</p>
+      <h2 class="section-title">Selected <em>work.</em></h2>
+      <p class="section-sub">Forty-four pieces, four disciplines. Hover a piece to see the story behind it — click to open it full.</p>
+    </div>
+
+    <div class="work-tools">
+      <div class="filters" id="filters" role="tablist" aria-label="Filter works by category"></div>
+      <div class="view-toggle" role="group" aria-label="Grid or list view">
+        <button class="view-toggle__btn is-active" data-view="grid" aria-pressed="true">▦ Grid</button>
+        <button class="view-toggle__btn" data-view="list" aria-pressed="false">☰ List</button>
+      </div>
+    </div>
+
+    <div class="work-grid" id="workGrid"></div>
+    <div class="work-list" id="workList" hidden></div>
+    <p class="work-count" id="workCount"></p>
+  </section>
+
+  <!-- ============ FORMATION / ABOUT ============ -->
+  <section class="formation" id="formation">
+    <div class="formation__inner">
+      <div class="formation__copy">
+        <p class="eyebrow">02 — The line-up</p>
+        <h2 class="section-title section-title--light">My skills,<br><em>as a team.</em></h2>
+        <p class="formation__text">Every project is a match. I don&rsquo;t play alone — I field a five-a-side squad of the things I actually do, and every one of them knows its position. <strong>Tap a player</strong> to see what they do on the pitch.</p>
+        <div class="formation__card" id="playerCard" aria-live="polite">
+          <span class="formation__card-num" id="pcNum">10</span>
+          <div>
+            <h3 id="pcName">Matchday Graphics</h3>
+            <p id="pcRole">Captain — fixtures, line-ups, countdowns. Live, every week.</p>
+          </div>
+        </div>
+        <p class="formation__bio">Mohamed Ragab — graphic designer at 360x / Sport360. I design match graphics and football social content for clubs and tournaments, mostly from the Gulf. Al Ahly supporter, by the way.</p>
+      </div>
+
+      <div class="pitch" id="pitch" aria-label="4-3-3 formation">
+        <div class="pitch__lines" aria-hidden="true">
+          <i class="pitch__half"></i><i class="pitch__circle"></i><i class="pitch__box pitch__box--top"></i><i class="pitch__box pitch__box--bottom"></i><i class="pitch__spot pitch__spot--top"></i><i class="pitch__spot pitch__spot--bottom"></i>
+        </div>
+        <p class="pitch__formation">1 — 2 — 1</p>
+        <!-- players injected by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLIENTS ============ -->
+  <section class="clients" id="clients">
+    <div class="section-head">
+      <p class="eyebrow eyebrow--dark">03 — Trusted by</p>
+      <h2 class="section-title">Clubs, leagues<br><em>&amp; tournaments.</em></h2>
+    </div>
+    <ul class="clients__wall" id="clientsWall"></ul>
+    <p class="clients__note">Al Ahly appears in the gallery as a personal project — not a client.</p>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="process" id="process">
+    <div class="section-head">
+      <p class="eyebrow">04 — How it works</p>
+      <h2 class="section-title section-title--light">Brief in.<br><em>Poster out.</em></h2>
+    </div>
+    <div class="process__tabs" role="tablist" aria-label="Process steps">
+      <button class="process__tab is-active" data-step="0" role="tab" aria-selected="true"><b>01</b> Brief</button>
+      <button class="process__tab" data-step="1" role="tab" aria-selected="false"><b>02</b> Concept</button>
+      <button class="process__tab" data-step="2" role="tab" aria-selected="false"><b>03</b> Design</button>
+      <button class="process__tab" data-step="3" role="tab" aria-selected="false"><b>04</b> Finish</button>
+    </div>
+    <div class="process__panel" id="processPanel" aria-live="polite"></div>
   </section>
 
   <!-- ============ CONTACT ============ -->
   <section class="contact" id="contact">
-    <div class="wrap">
-      <p class="eyebrow reveal"><span class="n">05 /</span> Contact</p>
-      <h2 class="reveal">Let's make<br><span class="noise-word">noise.</span></h2>
-      <div class="contact-grid">
-        <div class="reveal">
-          <p class="lead">Available for selected projects. <strong>One message is all it takes</strong> — pick a channel and the conversation starts today.</p>
-          <a class="btn btn-red btn-magnetic wa-primary" href="https://wa.me/201016029558" target="_blank" rel="noreferrer noopener"><svg class="ic fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>Start a project on WhatsApp <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
-          <br>
-          <button class="copy-btn" id="copyWa" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>Copy WhatsApp number — +20 101 602 9558</button>
-          <p class="note">Usually replies within 24 hours. Based in Egypt · Working across Saudi Arabia &amp; the region.</p>
-        </div>
-        <div class="contact-rows reveal" data-delay="1">
-          <a class="contact-row" href="https://www.instagram.com/mohamed_ragabgfx/" target="_blank" rel="noreferrer noopener"><svg class="ic social-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".8" fill="currentColor"/></svg><span><b>Instagram</b><br><span>@mohamed_ragabgfx</span></span><span class="go">↗</span></a>
-          <a class="contact-row" href="https://www.linkedin.com/in/mohamed-ragab-648a1a21b/" target="_blank" rel="noreferrer noopener"><svg class="ic fill social-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56z"/></svg><span><b>LinkedIn</b><br><span>Mohamed Ragab</span></span><span class="go">↗</span></a>
-          <a class="contact-row" href="https://www.facebook.com/MaDoPH/" target="_blank" rel="noreferrer noopener"><svg class="ic fill social-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8V11H8v3h2.5v7z"/></svg><span><b>Facebook</b><br><span>MaDoPH</span></span><span class="go">↗</span></a>
-          <span class="contact-row" title="Behance link to add"><svg class="ic social-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h6a3 3 0 010 6H4zM4 12h7a3.5 3.5 0 010 7H4z"/><path d="M18 8h4M18 12l3-2"/></svg><span><b>Behance</b><br><span>Link to add</span></span><span class="go">—</span></span>
-          <a class="contact-row" href="https://wa.me/201016029558" target="_blank" rel="noreferrer noopener"><svg class="ic fill social-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg><span><b>WhatsApp</b><br><span>+20 101 602 9558</span></span><span class="go">↗</span></a>
-        </div>
+    <div class="contact__panel">
+      <p class="eyebrow eyebrow--onred">05 — Your turn</p>
+      <h2 class="contact__title">LET&rsquo;S MAKE<br><em>noise.</em></h2>
+      <p class="contact__sub">A matchday, a campaign, a full season — if it needs to stop the scroll, I&rsquo;m in.</p>
+      <div class="contact__cta">
+        <a class="btn btn--dark" href="https://wa.me/201016029558" target="_blank" rel="noopener">WhatsApp — +20 101 602 9558</a>
+        <a class="btn btn--outline-light" href="#work">Browse the work ↑</a>
       </div>
+      <ul class="contact__socials">
+        <li><a href="https://www.instagram.com/mohamed_ragabgfx" target="_blank" rel="noopener">Instagram — @mohamed_ragabgfx ↗</a></li>
+        <li><a href="https://www.linkedin.com/in/mohamed-ragab-648a1a21b" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="https://www.facebook.com/MaDoPH" target="_blank" rel="noopener">Facebook — MaDoPH ↗</a></li>
+      </ul>
     </div>
   </section>
+
 </main>
 
-<footer class="site">
-  <div class="wrap">
-    <div class="foot-grid">
-      <span>© 2026 RagabGFX — Sports visuals &amp; design — Designed to move.</span>
-      <nav aria-label="Footer"><a href="#work">Work</a><a href="#clients">Clients</a><a href="#about">About</a><a href="#contact">Contact</a><a href="#top">Back to top ↑</a></nav>
-    </div>
-    <div class="foot-big" aria-hidden="true">RagabGFX — Visuals that move</div>
+<!-- ============ FOOTER ============ -->
+<footer class="site-foot">
+  <div class="site-foot__top">
+    <span>© 2026 Mohamed Ragab</span>
+    <span>RAGABGFX — Alexandria, Egypt</span>
+    <span><i class="dot-live"></i> <span id="clock2">00:00:00</span> <span id="tzLabel2">EET</span></span>
+    <a href="#top">Back to top ↑</a>
   </div>
+  <div class="site-foot__giant" aria-hidden="true">RAGABGFX</div>
 </footer>
 
-<!-- Lightbox: opens THAT work, with prev/next + story -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Work viewer">
-  <span class="lb-counter" id="lbCounter">1 / 44</span>
-  <button class="lb-close" id="lbClose" aria-label="Close viewer"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  <div class="lb-box">
-    <div class="lb-media"><img id="lbImg" src="" alt=""></div>
-    <div class="lb-info">
-      <div class="hud"><span>◉ HOLO / STORY</span><span id="lbMeta"></span></div>
-      <div id="lbChips"></div>
-      <h3 id="lbTitle"></h3>
-      <p id="lbWhy"></p>
-      <div class="lb-nav">
-        <button id="lbPrev" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg> Prev</button>
-        <button id="lbNext" type="button">Next <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-      </div>
-    </div>
-  </div>
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Work preview" hidden>
+  <button class="lightbox__close" id="lbClose" aria-label="Close">✕</button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Previous work">←</button>
+  <figure class="lightbox__fig">
+    <img id="lbImg" src="" alt="">
+    <figcaption><span id="lbTitle"></span><span id="lbMeta"></span></figcaption>
+  </figure>
+  <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next work">→</button>
+  <p class="lightbox__why" id="lbWhy"></p>
 </div>
 
-<script src="rgx-new.js"></script>
+<div class="grain" aria-hidden="true"></div>
+
+<script src="works.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
