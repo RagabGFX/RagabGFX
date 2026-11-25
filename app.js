@@ -180,13 +180,16 @@
     touchX = null;
   }, {passive:true});
 
-  /* ---------- formation: FIVE-A-SIDE — only what he actually does ---------- */
+  /* ---------- formation: EIGHT — 1-2-3-2, tools + crafts he actually uses ---------- */
   var PLAYERS = [
-    {num:1,  name:"Photoshop",        role:"Goalkeeper — the last line. Every pixel defended, every cut clean.",        x:50, y:90},
-    {num:2,  name:"Identity Systems", role:"Right back — clubs, leagues, tournaments: one visual language.",          x:70, y:66},
-    {num:3,  name:"Manipulation",     role:"Left back — reality, rebuilt frame by frame.",                            x:30, y:66},
-    {num:10, name:"Matchday Graphics",role:"Captain — fixtures, line-ups, countdowns. Live, every week.",             x:50, y:42, cap:true},
-    {num:9,  name:"Hero Posters",     role:"Striker — big players, bigger type. The one that stops the scroll.",       x:50, y:18}
+    {num:1,  name:"Photoshop",        short:"Photoshop",   role:"Goalkeeper — the last line. Every pixel defended, every cut clean.",        x:50, y:90, z:6},
+    {num:2,  name:"Illustrator",      short:"Illustrator", role:"Right back — vectors, logos, icons. Sharp at any size.",                   x:72, y:68, z:16},
+    {num:3,  name:"InDesign",         short:"InDesign",    role:"Left back — layouts, grids, print. Where long-form design lives.",          x:28, y:68, z:16},
+    {num:6,  name:"Identity Systems", short:"Identity",    role:"Midfield engine — clubs, leagues, tournaments: one visual language.",      x:20, y:45, z:28, mx:22},
+    {num:10, name:"Matchday Graphics",short:"Matchday",    role:"Captain — fixtures, line-ups, countdowns. Live, every week.",             x:50, y:45, z:34, cap:true},
+    {num:8,  name:"Manipulation",     short:"Manipulation",role:"Midfield — reality, rebuilt frame by frame.",                              x:80, y:45, z:28, mx:78},
+    {num:9,  name:"Hero Posters",     short:"Hero Posters",role:"Striker — big players, bigger type. The one that stops the scroll.",       x:32, y:20, z:44},
+    {num:11, name:"Premiere",         short:"Premiere",    role:"Striker — cuts, reels, matchday edits. The final cut before it goes live.",x:68, y:20, z:44}
   ];
   var pitch = document.getElementById("pitch"),
       pcNum = document.getElementById("pcNum"),
@@ -196,11 +199,13 @@
 
   PLAYERS.forEach(function(p){
     var el = document.createElement("button");
+    var small = window.innerWidth <= 640;
     el.className = "player" + (p.num === 10 ? " is-active" : "");
-    el.style.left = p.x + "%";
+    el.style.left = (small && p.mx ? p.mx : p.x) + "%";
     el.style.top = p.y + "%";
+    el.style.setProperty("--pz", (p.z || 0) + "px");
     el.setAttribute("aria-label", p.num + " — " + p.name);
-    el.innerHTML = '<span class="player__dot">' + p.num + (p.cap ? '<span class="cap">C</span>' : "") + '</span><span class="player__name">' + p.name + '</span>';
+    el.innerHTML = '<span class="player__dot">' + p.num + (p.cap ? '<span class="cap">C</span>' : "") + '</span><span class="player__name">' + (small && p.short ? p.short : p.name) + '</span>';
     el.addEventListener("click", function(){ selectPlayer(p, el); });
     el.addEventListener("mouseenter", function(){ selectPlayer(p, el); });
     pitch.appendChild(el);
@@ -214,6 +219,31 @@
     pcCard.classList.add("is-hot");
     setTimeout(function(){ pcCard.classList.remove("is-hot"); }, 600);
   }
+
+  /* ---------- formation 3D tilt: smooth, light, fine pointers only ---------- */
+  (function(){
+    var tilt = document.getElementById("pitchTilt");
+    if (!tilt) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+    var tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+    function loop(){
+      cx += (tx - cx) * 0.08;
+      cy += (ty - cy) * 0.08;
+      tilt.style.transform = "perspective(1100px) rotateX(" + (-cy * 5).toFixed(2) + "deg) rotateY(" + (cx * 7).toFixed(2) + "deg)";
+      if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) { raf = requestAnimationFrame(loop); }
+      else { raf = null; }
+    }
+    function kick(){ if (!raf) raf = requestAnimationFrame(loop); }
+    var section = document.getElementById("formation");
+    section.addEventListener("mousemove", function(e){
+      var r = tilt.getBoundingClientRect();
+      tx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+      ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      kick();
+    });
+    section.addEventListener("mouseleave", function(){ tx = 0; ty = 0; kick(); });
+  })();
 
   /* ---------- clients list ---------- */
   var CLIENTS = [
