@@ -69,13 +69,15 @@
     if(s && secIO) secIO.observe(s);
   });
 
-  /* ---------- work: filters + index rows ---------- */
-  var indexBox = document.getElementById("workIndex"),
+  /* ---------- work: filters + card slider ---------- */
+  var track = document.getElementById("workTrack"),
       filtersBox = document.getElementById("filters"),
       countEl = document.getElementById("workCount"),
-      showAllBtn = document.getElementById("showAll"),
-      currentFilter = "all",
-      PAGE = 12, expanded = false;
+      prevBtn = document.getElementById("workPrev"),
+      nextBtn = document.getElementById("workNext"),
+      barEl = document.getElementById("workBar"),
+      posEl = document.getElementById("workPos"),
+      currentFilter = "all";
 
   function counts(){
     var c = {all: WORKS.length};
@@ -94,7 +96,7 @@
       b.addEventListener("click", function(){
         filtersBox.querySelectorAll(".filter").forEach(function(x){ x.classList.remove("is-active"); x.setAttribute("aria-selected","false"); });
         b.classList.add("is-active"); b.setAttribute("aria-selected","true");
-        currentFilter = b.dataset.cat; expanded = false;
+        currentFilter = b.dataset.cat;
         renderWorks();
       });
     });
@@ -104,30 +106,63 @@
     return currentFilter === "all" ? WORKS : WORKS.filter(function(w){ return w.cat === currentFilter; });
   }
 
-  function rowHTML(w, i){
-    return '<button class="work-row" data-i="' + i + '" aria-label="' + w.title + ' — ' + w.client + '">' +
-      '<span class="work-row__num">' + String(i+1).padStart(2,"0") + '</span>' +
-      '<span class="work-row__thumb"><img src="' + w.src + '" alt="" loading="lazy"></span>' +
-      '<span class="work-row__title">' + w.title +
-        '<span class="work-row__meta">' + w.client + ' · ' + CAT_LABEL[w.cat] + '</span></span>' +
-      '<span class="work-row__arrow">→</span></button>';
+  function cardHTML(w, i){
+    return '<article class="work-card" data-i="' + i + '" tabindex="0" role="button" aria-label="' + w.title + ' — ' + w.client + '" style="--i:' + (i % 3) + '">' +
+      '<div class="work-card__media"><img src="' + w.src + '" alt="" loading="lazy" draggable="false"></div>' +
+      '<span class="work-card__chip">' + CAT_LABEL[w.cat] + '</span>' +
+      '<span class="work-card__num">' + String(i+1).padStart(2,"0") + '</span>' +
+      '<div class="work-card__info"><h3>' + w.title + '</h3><p>' + w.client + ' · ' + CAT_LABEL[w.cat] + '</p></div>' +
+    '</article>';
+  }
+
+  function cardWidth(){
+    var c = track.querySelector(".work-card");
+    if (!c) return 440;
+    return c.getBoundingClientRect().width + 20;
+  }
+
+  function updateNav(){
+    var n = filtered().length;
+    var max = track.scrollWidth - track.clientWidth;
+    var p = max > 0 ? track.scrollLeft / max : 0;
+    barEl.style.width = Math.max(8, Math.round(8 + p * 92)) + "%";
+    var idx = Math.min(n, Math.round(track.scrollLeft / cardWidth()) + 1);
+    posEl.textContent = String(idx).padStart(2,"0") + " / " + String(n).padStart(2,"0");
   }
 
   function renderWorks(){
     var items = filtered();
-    var show = (currentFilter === "all" && !expanded) ? items.slice(0, PAGE) : items;
-    indexBox.innerHTML = show.map(rowHTML).join("");
-    var more = (currentFilter === "all" && !expanded && items.length > PAGE);
-    showAllBtn.hidden = !more;
-    countEl.textContent = "Showing " + show.length + " of " + items.length + (currentFilter === "all" ? " selected works" : " in " + CAT_LABEL[currentFilter]);
-    indexBox.querySelectorAll(".work-row").forEach(function(el, k){
-      el.style.setProperty("--d", (k % 6) * 0.05 + "s");
-      el.classList.add("reveal");
-      if(io) io.observe(el); else el.classList.add("is-in");
+    track.innerHTML = items.map(cardHTML).join("");
+    track.scrollLeft = 0;
+    countEl.textContent = items.length + " pieces" + (currentFilter === "all" ? "" : " in " + CAT_LABEL[currentFilter]) + " — swipe, drag, or use the arrows";
+    track.querySelectorAll(".work-card").forEach(function(el){
       el.addEventListener("click", function(){ openViewer(+el.dataset.i); });
+      el.addEventListener("keydown", function(e){
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openViewer(+el.dataset.i); }
+      });
     });
+    updateNav();
   }
-  showAllBtn.addEventListener("click", function(){ expanded = true; renderWorks(); });
+
+  prevBtn.addEventListener("click", function(){ track.scrollBy({left: -cardWidth(), behavior: "smooth"}); });
+  nextBtn.addEventListener("click", function(){ track.scrollBy({left: cardWidth(), behavior: "smooth"}); });
+  track.addEventListener("scroll", function(){ updateNav(); }, {passive: true});
+  window.addEventListener("resize", function(){ updateNav(); });
+
+  /* drag to scroll (clicks still open the viewer; a drag does not) */
+  (function(){
+    var down = false, moved = false, startX = 0, startL = 0;
+    track.addEventListener("pointerdown", function(e){ down = true; moved = false; startX = e.clientX; startL = track.scrollLeft; });
+    track.addEventListener("pointermove", function(e){
+      if (!down) return;
+      var dx = e.clientX - startX;
+      if (Math.abs(dx) > 6) moved = true;
+      track.scrollLeft = startL - dx;
+    });
+    track.addEventListener("pointerup", function(){ down = false; });
+    track.addEventListener("pointercancel", function(){ down = false; });
+    track.addEventListener("click", function(e){ if (moved) { e.stopPropagation(); e.preventDefault(); } }, true);
+  })();
 
   /* ---------- viewer ---------- */
   var vw = document.getElementById("viewer"),
@@ -271,6 +306,7 @@
     }
     addTilt(document.getElementById("portraitTilt"), document.querySelector(".hero"), 4, 6);
     addTilt(document.querySelector(".viewer__fig"), document.querySelector(".viewer"), 3, 5);
+    addTilt(document.getElementById("contactTilt"), document.querySelector(".contact"), 2, 3);
   })();
 
   /* ---------- clients list ---------- */

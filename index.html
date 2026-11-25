@@ -83,14 +83,19 @@
       <div class="section-head reveal">
         <p class="eyebrow eyebrow--dark">01 — The programme</p>
         <h2 class="section-title">Selected <em>work.</em></h2>
-        <p class="section-sub">Forty-four pieces, four disciplines. One list, no clutter — tap a row to open it full.</p>
+        <p class="section-sub">Forty-four pieces, four disciplines. Swipe through the work — tap a card to open it full.</p>
       </div>
       <div class="filters reveal" id="filters" role="tablist" aria-label="Filter works by category"></div>
-      <div class="work-index reveal" id="workIndex"></div>
-      <div class="work-foot">
-        <p class="work-count" id="workCount"></p>
-        <button class="btn btn--dark" id="showAll" hidden>Show all 44 ↓</button>
+      <div class="work-slider reveal" id="workSlider">
+        <div class="work-track" id="workTrack"></div>
       </div>
+      <div class="work-nav reveal">
+        <button class="work-arrow" id="workPrev" aria-label="Previous works">←</button>
+        <div class="work-progress" aria-hidden="true"><span id="workBar"></span></div>
+        <span class="work-pos" id="workPos">01 / 44</span>
+        <button class="work-arrow" id="workNext" aria-label="Next works">→</button>
+      </div>
+      <p class="work-count" id="workCount"></p>
     </div>
   </section>
 
@@ -149,6 +154,7 @@
   <!-- ============ CONTACT ============ -->
   <section class="contact" id="contact">
     <div class="wrap">
+      <div class="contact-tilt" id="contactTilt">
       <div class="contact__panel reveal">
         <p class="eyebrow eyebrow--onred">04 — Your turn</p>
         <h2 class="contact__title">LET&rsquo;S MAKE<br><em>noise.</em></h2>
@@ -159,6 +165,7 @@
           <li><a href="https://www.linkedin.com/in/mohamed-ragab-648a1a21b" target="_blank" rel="noopener"><span class="socials__name">LinkedIn</span><span class="socials__handle">Mohamed Ragab</span><span class="socials__arrow">↗</span></a></li>
           <li><a href="https://www.facebook.com/MaDoPH" target="_blank" rel="noopener"><span class="socials__name">Facebook</span><span class="socials__handle">MaDoPH</span><span class="socials__arrow">↗</span></a></li>
         </ul>
+      </div>
       </div>
     </div>
   </section>
