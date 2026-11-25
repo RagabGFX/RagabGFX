@@ -245,6 +245,34 @@
     section.addEventListener("mouseleave", function(){ tx = 0; ty = 0; kick(); });
   })();
 
+  /* ---------- floating 3D: hero portrait + viewer slider ---------- */
+  (function(){
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+    function addTilt(el, zone, maxX, maxY){
+      if (!el || !zone) return;
+      var tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+      function loop(){
+        cx += (tx - cx) * 0.08;
+        cy += (ty - cy) * 0.08;
+        el.style.transform = "perspective(1100px) rotateX(" + (-cy * maxX).toFixed(2) + "deg) rotateY(" + (cx * maxY).toFixed(2) + "deg)";
+        if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) { raf = requestAnimationFrame(loop); }
+        else { raf = null; }
+      }
+      function kick(){ if (!raf) raf = requestAnimationFrame(loop); }
+      zone.addEventListener("mousemove", function(e){
+        var r = el.getBoundingClientRect();
+        if (!r.width) return;
+        tx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+        ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
+        kick();
+      });
+      zone.addEventListener("mouseleave", function(){ tx = 0; ty = 0; kick(); });
+    }
+    addTilt(document.getElementById("portraitTilt"), document.querySelector(".hero"), 4, 6);
+    addTilt(document.querySelector(".viewer__fig"), document.querySelector(".viewer"), 3, 5);
+  })();
+
   /* ---------- clients list ---------- */
   var CLIENTS = [
     ["Serie A","Italy"],["FIFA Club World Cup","Saudi 2023"],["NBA","Basketball"],
