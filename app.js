@@ -306,7 +306,7 @@
     }
     addTilt(document.getElementById("portraitTilt"), document.querySelector(".hero"), 4, 6);
     addTilt(document.querySelector(".viewer__fig"), document.querySelector(".viewer"), 3, 5);
-    addTilt(document.getElementById("contactTilt"), document.querySelector(".contact"), 2, 3);
+    addTilt(document.getElementById("contactTilt"), document.querySelector(".contact"), 4, 6);
   })();
 
   /* ---------- clients list ---------- */

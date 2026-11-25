@@ -283,10 +283,17 @@ body.is-ready .t-line>span{transform:none}
   .work-arrow{width:42px;height:42px}
 }
 
-/* floating 3D — contact panel (tilt on the wrapper, float on the wrapper) */
-.contact-tilt{will-change:transform;animation:floatySoft 7s ease-in-out infinite}
-@keyframes floatySoft{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.contact__panel{transform-style:preserve-3d;box-shadow:0 40px 80px rgba(0,0,0,.45)}
+/* floating 3D — contact panel: layered back card (depth you see in a still),
+   float, and mouse tilt on the wrapper */
+.contact-tilt{position:relative;transform-style:preserve-3d;will-change:transform;animation:floatySoft 7s ease-in-out infinite}
+.contact-tilt::before{
+  content:"";position:absolute;inset:0;border-radius:var(--radius);
+  background:linear-gradient(160deg,#8f0a05,#5c0300);
+  transform:translateZ(-50px) translate(20px,24px);
+  box-shadow:0 30px 60px rgba(0,0,0,.5);
+}
+@keyframes floatySoft{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.contact__panel{transform-style:preserve-3d;box-shadow:0 50px 90px rgba(0,0,0,.5)}
 .contact__panel .btn--dark{transform:translateZ(28px)}
 .socials li a{transform:translateZ(14px)}
 
