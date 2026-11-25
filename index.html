@@ -6,6 +6,9 @@
 <title>RAGABGFX — Mohamed Ragab · Sports Graphic Designer</title>
 <meta name="description" content="Mohamed Ragab — sports graphic designer. Matchday graphics, hero posters, identities, manipulation. 2000+ projects. Alexandria, Egypt.">
 <link rel="stylesheet" href="style.css">
+  <!-- Playfair is self-hosted too (assets/fonts/…); the CDN link below is a
+       fallback so GitHub Pages still gets the real italic when the woff2
+       can't be pushed there via the snapshot route. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600..800&display=swap" rel="stylesheet">
@@ -14,110 +17,85 @@
 
 <!-- ============ PRELOADER ============ -->
 <div class="preloader" id="preloader" aria-hidden="true">
-  <div class="preloader__inner">
-    <div class="preloader__mark">RAGAB<span>GFX</span></div>
-    <div class="preloader__count"><span id="preCount">000</span><i>%</i></div>
-    <div class="preloader__bar"><i id="preBar"></i></div>
-  </div>
+  <div class="preloader__mark">RAGAB<span>GFX</span></div>
+  <div class="preloader__bar"><i id="preBar"></i></div>
 </div>
+
+<!-- scroll progress -->
+<div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+<!-- ============ RAIL NAV (desktop) ============ -->
+<nav class="rail" aria-label="Sections">
+  <a class="rail__item is-active" href="#work" data-sec="work"><span class="rail__num">01</span><span class="rail__label">Work</span><i class="rail__fill"></i></a>
+  <a class="rail__item" href="#formation" data-sec="formation"><span class="rail__num">02</span><span class="rail__label">Line-up</span><i class="rail__fill"></i></a>
+  <a class="rail__item" href="#clients" data-sec="clients"><span class="rail__num">03</span><span class="rail__label">Clients</span><i class="rail__fill"></i></a>
+  <a class="rail__item" href="#contact" data-sec="contact"><span class="rail__num">04</span><span class="rail__label">Contact</span><i class="rail__fill"></i></a>
+</nav>
 
 <!-- ============ HEADER ============ -->
 <header class="site-head" id="siteHead">
-  <a class="brand" href="#top">RAGAB<span>GFX</span><i>®</i></a>
-  <div class="head-meta">
-    <span class="head-meta__place">ALEXANDRIA, EG — 31.2001° N / 29.9187° E</span>
-    <span class="head-meta__clock"><i class="dot-live"></i><span id="clock">00:00:00</span> <span id="tzLabel">EET</span></span>
+  <div class="wrap site-head__in">
+    <a class="brand" href="#top">RAGAB<span>GFX</span><i>®</i></a>
+    <div class="head-meta">
+      <span class="head-meta__place">ALEXANDRIA, EG — 31.2001° N / 29.9187° E</span>
+      <span class="head-meta__clock"><i class="dot-live"></i><span id="clock">00:00:00</span> <span id="tzLabel">EET</span></span>
+    </div>
+    <a class="btn btn--red btn--sm" href="https://wa.me/201016029558" target="_blank" rel="noopener">WhatsApp ↗</a>
   </div>
-  <nav class="pill-nav" aria-label="Sections">
-    <a href="#work">Work</a>
-    <a href="#formation">Line-up</a>
-    <a href="#clients">Clients</a>
-    <a href="#process">Process</a>
-  </nav>
-  <a class="btn btn--red btn--sm" href="#contact">Let&rsquo;s talk ↗</a>
 </header>
 
 <main id="top">
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="hero__panel">
-      <div class="hero__top">
-        <div class="hero__copy">
-          <p class="eyebrow"><span class="dot-live"></span> Open for selected projects — Season 2026/27</p>
-          <h1 class="hero__title">
-            <span class="t-line">VISUALS</span>
-            <span class="t-line t-line--serif">that <em>move.</em></span>
-          </h1>
-          <p class="hero__sub">I&rsquo;m <strong>Mohamed Ragab</strong> — a sports graphic designer from Alexandria, Egypt. Matchday posters, hero graphics, identities and manipulation for clubs and tournaments across the Gulf and beyond.</p>
-          <div class="hero__cta">
-            <a class="btn btn--red" href="#work">See the work ↓</a>
-            <a class="btn btn--ghost" href="https://wa.me/201016029558" target="_blank" rel="noopener">WhatsApp me</a>
-          </div>
-        </div>
-        <figure class="hero__portrait">
-          <img src="assets/rgx15/hero-profile.png" alt="Mohamed Ragab" width="880" height="880">
-          <figcaption><span class="fig-num">Nº 10</span> Mohamed Ragab — Playmaker</figcaption>
-          <span class="asterisk" aria-hidden="true">✳</span>
-        </figure>
-      </div>
-
-      <!-- season stats collage -->
-      <div class="stats" aria-label="Season stats">
-        <div class="stat stat--donut">
-          <div class="donut" style="--p:100">
-            <svg viewBox="0 0 100 100"><circle class="donut__track" cx="50" cy="50" r="42"/><circle class="donut__fill" cx="50" cy="50" r="42"/></svg>
-            <span class="donut__val">44</span>
-          </div>
-          <div class="stat__txt"><b>Selected works</b><span>on this page — every one shipped live</span></div>
-        </div>
-        <div class="stat stat--bar">
-          <div class="stat__big">2000<span>+</span></div>
-          <div class="stat__txt"><b>Projects delivered</b><span>matchdays, campaigns, kits &amp; more</span></div>
-          <div class="meter"><i style="--w:92%"></i></div>
-          <span class="stat__note">92% — delivered on deadline</span>
-        </div>
-        <div class="stat stat--num">
-          <div class="stat__big">17</div>
-          <div class="stat__txt"><b>Clients</b><span>clubs, leagues &amp; tournaments — mainly the Gulf</span></div>
-          <div class="stat__chips"><span>AFC</span><span>SPL</span><span>CAF</span><span>+14</span></div>
+    <div class="wrap hero__in">
+      <div class="hero__copy">
+        <p class="eyebrow"><span class="dot-live"></span> Open for selected projects — Season 2026/27</p>
+        <h1 class="hero__title">
+          <span class="t-line"><span>VISUALS</span></span>
+          <span class="t-line t-line--serif"><span>that <em>move.</em></span></span>
+        </h1>
+        <p class="hero__sub">I&rsquo;m <strong>Mohamed Ragab</strong> — a sports graphic designer from Alexandria, Egypt. Matchday posters, hero graphics, identities and manipulation for clubs and tournaments across the Gulf and beyond.</p>
+        <div class="hero__cta">
+          <a class="btn btn--red" href="#work">See the work ↓</a>
+          <a class="btn btn--ghost" href="#formation">My line-up →</a>
         </div>
       </div>
+      <figure class="hero__portrait reveal">
+        <img src="assets/rgx15/hero-profile.png" alt="Mohamed Ragab" width="880" height="880">
+        <figcaption><span class="fig-num">Nº 10</span> Mohamed Ragab — Playmaker</figcaption>
+      </figure>
     </div>
-
-    <!-- ticker -->
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker__track" id="tickerTrack">
-        <span>Matchdays</span><i>✦</i><span>Hero Graphics</span><i>✦</i><span>Identities</span><i>✦</i><span>Manipulation</span><i>✦</i><span>Campaigns</span><i>✦</i><span>Countdowns</span><i>✦</i><span>Ticket Launches</span><i>✦</i>
+    <div class="wrap">
+      <div class="stats reveal" aria-label="Season stats">
+        <div class="stat"><b>44</b><span>Selected works</span></div>
+        <div class="stat"><b>2000<span>+</span></b><span>Projects delivered</span></div>
+        <div class="stat"><b>17</b><span>Clients — clubs, leagues &amp; tournaments</span></div>
       </div>
     </div>
   </section>
 
   <!-- ============ WORK ============ -->
   <section class="work" id="work">
-    <div class="section-head">
-      <p class="eyebrow eyebrow--dark">01 — The programme</p>
-      <h2 class="section-title">Selected <em>work.</em></h2>
-      <p class="section-sub">Forty-four pieces, four disciplines. Hover a piece to see the story behind it — click to open it full.</p>
-    </div>
-
-    <div class="work-tools">
-      <div class="filters" id="filters" role="tablist" aria-label="Filter works by category"></div>
-      <div class="view-toggle" role="group" aria-label="Grid or list view">
-        <button class="view-toggle__btn is-active" data-view="grid" aria-pressed="true">▦ Grid</button>
-        <button class="view-toggle__btn" data-view="list" aria-pressed="false">☰ List</button>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow eyebrow--dark">01 — The programme</p>
+        <h2 class="section-title">Selected <em>work.</em></h2>
+        <p class="section-sub">Forty-four pieces, four disciplines. One list, no clutter — tap a row to open it full.</p>
+      </div>
+      <div class="filters reveal" id="filters" role="tablist" aria-label="Filter works by category"></div>
+      <div class="work-index reveal" id="workIndex"></div>
+      <div class="work-foot">
+        <p class="work-count" id="workCount"></p>
+        <button class="btn btn--dark" id="showAll" hidden>Show all 44 ↓</button>
       </div>
     </div>
-
-    <div class="work-grid" id="workGrid"></div>
-    <div class="work-list" id="workList" hidden></div>
-    <p class="work-count" id="workCount"></p>
   </section>
 
   <!-- ============ FORMATION / ABOUT ============ -->
   <section class="formation" id="formation">
-    <div class="formation__inner">
-      <div class="formation__copy">
+    <div class="wrap formation__in">
+      <div class="formation__copy reveal">
         <p class="eyebrow">02 — The line-up</p>
         <h2 class="section-title section-title--light">My skills,<br><em>as a team.</em></h2>
         <p class="formation__text">Every project is a match. I don&rsquo;t play alone — I field a five-a-side squad of the things I actually do, and every one of them knows its position. <strong>Tap a player</strong> to see what they do on the pitch.</p>
@@ -130,8 +108,7 @@
         </div>
         <p class="formation__bio">Mohamed Ragab — graphic designer at 360x / Sport360. I design match graphics and football social content for clubs and tournaments, mostly from the Gulf. Al Ahly supporter, by the way.</p>
       </div>
-
-      <div class="pitch" id="pitch" aria-label="4-3-3 formation">
+      <div class="pitch reveal" id="pitch" aria-label="Five-a-side formation">
         <div class="pitch__lines" aria-hidden="true">
           <i class="pitch__half"></i><i class="pitch__circle"></i><i class="pitch__box pitch__box--top"></i><i class="pitch__box pitch__box--bottom"></i><i class="pitch__spot pitch__spot--top"></i><i class="pitch__spot pitch__spot--bottom"></i>
         </div>
@@ -143,44 +120,42 @@
 
   <!-- ============ CLIENTS ============ -->
   <section class="clients" id="clients">
-    <div class="section-head">
-      <p class="eyebrow eyebrow--dark">03 — Trusted by</p>
-      <h2 class="section-title">Clubs, leagues<br><em>&amp; tournaments.</em></h2>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow eyebrow--dark">03 — Trusted by</p>
+        <h2 class="section-title">Clubs, leagues<br><em>&amp; tournaments.</em></h2>
+      </div>
+      <ul class="clients__list reveal" id="clientsList"></ul>
+      <p class="clients__note reveal">Al Ahly appears in the gallery as a personal project — not a client.</p>
     </div>
-    <ul class="clients__wall" id="clientsWall"></ul>
-    <p class="clients__note">Al Ahly appears in the gallery as a personal project — not a client.</p>
   </section>
 
-  <!-- ============ PROCESS ============ -->
-  <section class="process" id="process">
-    <div class="section-head">
-      <p class="eyebrow">04 — How it works</p>
-      <h2 class="section-title section-title--light">Brief in.<br><em>Poster out.</em></h2>
+  <!-- ============ PROCESS STRIP ============ -->
+  <section class="process">
+    <div class="wrap">
+      <ol class="process__steps reveal">
+        <li><b>01</b><h3>Brief</h3><p>Match, moment, deadline.</p></li>
+        <li><b>02</b><h3>Concept</h3><p>One idea, loud.</p></li>
+        <li><b>03</b><h3>Design</h3><p>Built to stop thumbs.</p></li>
+        <li><b>04</b><h3>Finish</h3><p>On time, every time.</p></li>
+      </ol>
     </div>
-    <div class="process__tabs" role="tablist" aria-label="Process steps">
-      <button class="process__tab is-active" data-step="0" role="tab" aria-selected="true"><b>01</b> Brief</button>
-      <button class="process__tab" data-step="1" role="tab" aria-selected="false"><b>02</b> Concept</button>
-      <button class="process__tab" data-step="2" role="tab" aria-selected="false"><b>03</b> Design</button>
-      <button class="process__tab" data-step="3" role="tab" aria-selected="false"><b>04</b> Finish</button>
-    </div>
-    <div class="process__panel" id="processPanel" aria-live="polite"></div>
   </section>
 
   <!-- ============ CONTACT ============ -->
   <section class="contact" id="contact">
-    <div class="contact__panel">
-      <p class="eyebrow eyebrow--onred">05 — Your turn</p>
-      <h2 class="contact__title">LET&rsquo;S MAKE<br><em>noise.</em></h2>
-      <p class="contact__sub">A matchday, a campaign, a full season — if it needs to stop the scroll, I&rsquo;m in.</p>
-      <div class="contact__cta">
+    <div class="wrap">
+      <div class="contact__panel reveal">
+        <p class="eyebrow eyebrow--onred">04 — Your turn</p>
+        <h2 class="contact__title">LET&rsquo;S MAKE<br><em>noise.</em></h2>
+        <p class="contact__sub">A matchday, a campaign, a full season — if it needs to stop the scroll, I&rsquo;m in.</p>
         <a class="btn btn--dark" href="https://wa.me/201016029558" target="_blank" rel="noopener">WhatsApp — +20 101 602 9558</a>
-        <a class="btn btn--outline-light" href="#work">Browse the work ↑</a>
+        <ul class="socials">
+          <li><a href="https://www.instagram.com/mohamed_ragabgfx" target="_blank" rel="noopener"><span class="socials__name">Instagram</span><span class="socials__handle">@mohamed_ragabgfx</span><span class="socials__arrow">↗</span></a></li>
+          <li><a href="https://www.linkedin.com/in/mohamed-ragab-648a1a21b" target="_blank" rel="noopener"><span class="socials__name">LinkedIn</span><span class="socials__handle">Mohamed Ragab</span><span class="socials__arrow">↗</span></a></li>
+          <li><a href="https://www.facebook.com/MaDoPH" target="_blank" rel="noopener"><span class="socials__name">Facebook</span><span class="socials__handle">MaDoPH</span><span class="socials__arrow">↗</span></a></li>
+        </ul>
       </div>
-      <ul class="contact__socials">
-        <li><a href="https://www.instagram.com/mohamed_ragabgfx" target="_blank" rel="noopener">Instagram — @mohamed_ragabgfx ↗</a></li>
-        <li><a href="https://www.linkedin.com/in/mohamed-ragab-648a1a21b" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-        <li><a href="https://www.facebook.com/MaDoPH" target="_blank" rel="noopener">Facebook — MaDoPH ↗</a></li>
-      </ul>
     </div>
   </section>
 
@@ -188,7 +163,7 @@
 
 <!-- ============ FOOTER ============ -->
 <footer class="site-foot">
-  <div class="site-foot__top">
+  <div class="wrap site-foot__top">
     <span>© 2026 Mohamed Ragab</span>
     <span>RAGABGFX — Alexandria, Egypt</span>
     <span><i class="dot-live"></i> <span id="clock2">00:00:00</span> <span id="tzLabel2">EET</span></span>
@@ -197,16 +172,30 @@
   <div class="site-foot__giant" aria-hidden="true">RAGABGFX</div>
 </footer>
 
-<!-- ============ LIGHTBOX ============ -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Work preview" hidden>
-  <button class="lightbox__close" id="lbClose" aria-label="Close">✕</button>
-  <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Previous work">←</button>
-  <figure class="lightbox__fig">
-    <img id="lbImg" src="" alt="">
-    <figcaption><span id="lbTitle"></span><span id="lbMeta"></span></figcaption>
+<!-- ============ BOTTOM NAV (mobile) ============ -->
+<nav class="dock" aria-label="Sections">
+  <a href="#work" data-sec="work" class="is-active"><b>01</b> Work</a>
+  <a href="#formation" data-sec="formation"><b>02</b> Line-up</a>
+  <a href="#clients" data-sec="clients"><b>03</b> Clients</a>
+  <a href="#contact" data-sec="contact"><b>04</b> Contact</a>
+</nav>
+
+<!-- ============ VIEWER ============ -->
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Work preview" hidden>
+  <div class="viewer__top">
+    <span class="viewer__count" id="vwCount">01 / 44</span>
+    <button class="viewer__close" id="vwClose" aria-label="Close">✕ Close</button>
+  </div>
+  <button class="viewer__nav viewer__nav--prev" id="vwPrev" aria-label="Previous work">←</button>
+  <figure class="viewer__fig">
+    <img id="vwImg" src="" alt="">
+    <figcaption>
+      <h3 id="vwTitle"></h3>
+      <p class="viewer__meta" id="vwMeta"></p>
+      <p class="viewer__why" id="vwWhy"></p>
+    </figcaption>
   </figure>
-  <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next work">→</button>
-  <p class="lightbox__why" id="lbWhy"></p>
+  <button class="viewer__nav viewer__nav--next" id="vwNext" aria-label="Next work">→</button>
 </div>
 
 <div class="grain" aria-hidden="true"></div>

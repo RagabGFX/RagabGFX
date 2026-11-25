@@ -1,21 +1,22 @@
-/* RagabGFX v2 — app logic. Data lives in works.js (WORKS, CAT_LABEL). */
+/* RagabGFX v3 — app logic. Data lives in works.js (WORKS, CAT_LABEL). */
 (function(){
   "use strict";
 
-  /* ---------- preloader ---------- */
+  /* ---------- preloader: quick, then reveal the hero ---------- */
   var pre = document.getElementById("preloader"),
-      preCount = document.getElementById("preCount"),
-      preBar = document.getElementById("preBar"),
-      n = 0;
+      preBar = document.getElementById("preBar");
+  var p = 0;
   var preTimer = setInterval(function(){
-    n = Math.min(100, n + Math.ceil(Math.random()*14));
-    preCount.textContent = String(n).padStart(3,"0");
-    preBar.style.width = n + "%";
-    if(n >= 100){
+    p = Math.min(100, p + 34);
+    preBar.style.width = p + "%";
+    if(p >= 100){
       clearInterval(preTimer);
-      setTimeout(function(){ pre.classList.add("is-done"); }, 250);
+      setTimeout(function(){
+        pre.classList.add("is-done");
+        document.body.classList.add("is-ready");
+      }, 200);
     }
-  }, 90);
+  }, 120);
 
   /* ---------- live clock — the VISITOR's local time, not Egypt's ---------- */
   function tickClock(){
@@ -34,21 +35,47 @@
   }
   tickClock(); setInterval(tickClock, 1000);
 
-  /* ---------- ticker: duplicate content for seamless loop ---------- */
-  var track = document.getElementById("tickerTrack");
-  if(track) track.innerHTML += track.innerHTML;
+  /* ---------- scroll progress bar ---------- */
+  var progressBar = document.getElementById("progressBar");
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    progressBar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  onScroll();
 
-  /* ---------- work: filters + grid + list ---------- */
-  var grid = document.getElementById("workGrid"),
-      list = document.getElementById("workList"),
+  /* ---------- reveal on scroll ---------- */
+  var io = ("IntersectionObserver" in window) ? new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add("is-in"); io.unobserve(e.target); }
+    });
+  }, {threshold:.12}) : null;
+  document.querySelectorAll(".reveal").forEach(function(el){
+    if(io) io.observe(el); else el.classList.add("is-in");
+  });
+
+  /* ---------- rail + dock: highlight the section in view ---------- */
+  var navLinks = document.querySelectorAll("[data-sec]");
+  var secIO = ("IntersectionObserver" in window) ? new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var id = e.target.id;
+      navLinks.forEach(function(a){ a.classList.toggle("is-active", a.dataset.sec === id); });
+    });
+  }, {rootMargin:"-40% 0px -55% 0px"}) : null;
+  ["work","formation","clients","contact"].forEach(function(id){
+    var s = document.getElementById(id);
+    if(s && secIO) secIO.observe(s);
+  });
+
+  /* ---------- work: filters + index rows ---------- */
+  var indexBox = document.getElementById("workIndex"),
       filtersBox = document.getElementById("filters"),
       countEl = document.getElementById("workCount"),
+      showAllBtn = document.getElementById("showAll"),
       currentFilter = "all",
-      currentView = "grid",
-      PAGE = 12, expanded = false,
-      io = ("IntersectionObserver" in window) ? new IntersectionObserver(function(es){
-        es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("is-in"); io.unobserve(e.target); } });
-      }, {threshold:.12}) : null;
+      PAGE = 12, expanded = false;
 
   function counts(){
     var c = {all: WORKS.length};
@@ -77,90 +104,81 @@
     return currentFilter === "all" ? WORKS : WORKS.filter(function(w){ return w.cat === currentFilter; });
   }
 
-  function cardHTML(w, i){
-    return '<article class="work-card" data-i="' + i + '" tabindex="0" role="button" aria-label="' + w.title + ' — ' + w.client + '">' +
-      '<span class="work-card__num">[' + String(i+1).padStart(2,"0") + ']</span>' +
-      '<img src="' + w.src + '" alt="' + w.title + '" loading="lazy">' +
-      '<div class="work-card__holo"><h3>' + w.title + '</h3><div class="cat">' + CAT_LABEL[w.cat] + ' — ' + w.client + '</div><p>' + w.why + '</p></div>' +
-      '</article>';
+  function rowHTML(w, i){
+    return '<button class="work-row" data-i="' + i + '" aria-label="' + w.title + ' — ' + w.client + '">' +
+      '<span class="work-row__num">' + String(i+1).padStart(2,"0") + '</span>' +
+      '<span class="work-row__thumb"><img src="' + w.src + '" alt="" loading="lazy"></span>' +
+      '<span class="work-row__title">' + w.title +
+        '<span class="work-row__meta">' + w.client + ' · ' + CAT_LABEL[w.cat] + '</span></span>' +
+      '<span class="work-row__arrow">→</span></button>';
   }
 
   function renderWorks(){
     var items = filtered();
     var show = (currentFilter === "all" && !expanded) ? items.slice(0, PAGE) : items;
-    grid.innerHTML = show.map(cardHTML).join("") +
-      ((currentFilter === "all" && !expanded && items.length > PAGE)
-        ? '<button class="work-card work-card--more" id="showAll" style="display:flex;align-items:center;justify-content:center;background:var(--ink);color:var(--paper);font-family:var(--font-display);font-size:1.3rem;letter-spacing:.04em;text-transform:uppercase">Explore all ' + items.length + ' ↓</button>'
-        : "");
-    list.innerHTML = items.map(function(w, i){
-      return '<div class="work-row" data-i="' + i + '" tabindex="0" role="button" aria-label="' + w.title + '">' +
-        '<span class="work-row__num">[' + String(i+1).padStart(2,"0") + ']</span>' +
-        '<span class="work-row__title">' + w.title + '</span>' +
-        '<span class="work-row__client">' + w.client + '</span>' +
-        '<span class="work-row__cat">' + CAT_LABEL[w.cat] + '</span></div>';
-    }).join("");
+    indexBox.innerHTML = show.map(rowHTML).join("");
+    var more = (currentFilter === "all" && !expanded && items.length > PAGE);
+    showAllBtn.hidden = !more;
     countEl.textContent = "Showing " + show.length + " of " + items.length + (currentFilter === "all" ? " selected works" : " in " + CAT_LABEL[currentFilter]);
-    grid.querySelectorAll(".work-card").forEach(function(el){
+    indexBox.querySelectorAll(".work-row").forEach(function(el, k){
+      el.style.setProperty("--d", (k % 6) * 0.05 + "s");
+      el.classList.add("reveal");
       if(io) io.observe(el); else el.classList.add("is-in");
-      el.addEventListener("click", function(){
-        if(el.id === "showAll"){ expanded = true; renderWorks(); return; }
-        openLightbox(+el.dataset.i);
-      });
-      el.addEventListener("keydown", function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); el.click(); } });
-    });
-    list.querySelectorAll(".work-row").forEach(function(el){
-      el.addEventListener("click", function(){ openLightbox(+el.dataset.i); });
-      el.addEventListener("keydown", function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); el.click(); } });
+      el.addEventListener("click", function(){ openViewer(+el.dataset.i); });
     });
   }
+  showAllBtn.addEventListener("click", function(){ expanded = true; renderWorks(); });
 
-  /* view toggle */
-  document.querySelectorAll(".view-toggle__btn").forEach(function(b){
-    b.addEventListener("click", function(){
-      document.querySelectorAll(".view-toggle__btn").forEach(function(x){ x.classList.remove("is-active"); x.setAttribute("aria-pressed","false"); });
-      b.classList.add("is-active"); b.setAttribute("aria-pressed","true");
-      currentView = b.dataset.view;
-      grid.hidden = currentView !== "grid";
-      list.hidden = currentView !== "list";
-    });
-  });
+  /* ---------- viewer ---------- */
+  var vw = document.getElementById("viewer"),
+      vwImg = document.getElementById("vwImg"),
+      vwTitle = document.getElementById("vwTitle"),
+      vwMeta = document.getElementById("vwMeta"),
+      vwWhy = document.getElementById("vwWhy"),
+      vwCount = document.getElementById("vwCount"),
+      vwFig = vw.querySelector(".viewer__fig"),
+      vwIndex = 0;
 
-  /* ---------- lightbox ---------- */
-  var lb = document.getElementById("lightbox"),
-      lbImg = document.getElementById("lbImg"),
-      lbTitle = document.getElementById("lbTitle"),
-      lbMeta = document.getElementById("lbMeta"),
-      lbWhy = document.getElementById("lbWhy"),
-      lbIndex = 0;
-
-  function openLightbox(i){
-    lbIndex = i;
+  function openViewer(i){
+    vwIndex = i;
     var items = filtered();
     var w = items[i];
-    lbImg.src = w.src;
-    lbImg.alt = w.title;
-    lbTitle.textContent = w.title;
-    lbMeta.textContent = (i+1) + " / " + items.length + " — " + CAT_LABEL[w.cat] + " · " + w.client;
-    lbWhy.textContent = w.why;
-    lb.hidden = false;
+    vwImg.src = w.src;
+    vwImg.alt = w.title;
+    vwTitle.textContent = w.title;
+    vwMeta.textContent = CAT_LABEL[w.cat] + " · " + w.client;
+    vwWhy.textContent = w.why;
+    vwCount.textContent = String(i+1).padStart(2,"0") + " / " + items.length;
+    vwFig.classList.remove("is-swap");
+    void vwFig.offsetWidth;
+    vwFig.classList.add("is-swap");
+    vw.hidden = false;
     document.body.style.overflow = "hidden";
   }
-  function closeLightbox(){ lb.hidden = true; document.body.style.overflow = ""; }
+  function closeViewer(){ vw.hidden = true; document.body.style.overflow = ""; }
   function step(d){
     var items = filtered();
-    lbIndex = (lbIndex + d + items.length) % items.length;
-    openLightbox(lbIndex);
+    vwIndex = (vwIndex + d + items.length) % items.length;
+    openViewer(vwIndex);
   }
-  document.getElementById("lbClose").addEventListener("click", closeLightbox);
-  document.getElementById("lbPrev").addEventListener("click", function(){ step(-1); });
-  document.getElementById("lbNext").addEventListener("click", function(){ step(1); });
-  lb.addEventListener("click", function(e){ if(e.target === lb) closeLightbox(); });
+  document.getElementById("vwClose").addEventListener("click", closeViewer);
+  document.getElementById("vwPrev").addEventListener("click", function(){ step(-1); });
+  document.getElementById("vwNext").addEventListener("click", function(){ step(1); });
+  vw.addEventListener("click", function(e){ if(e.target === vw) closeViewer(); });
   document.addEventListener("keydown", function(e){
-    if(lb.hidden) return;
-    if(e.key === "Escape") closeLightbox();
+    if(vw.hidden) return;
+    if(e.key === "Escape") closeViewer();
     if(e.key === "ArrowLeft") step(-1);
     if(e.key === "ArrowRight") step(1);
   });
+  var touchX = null;
+  vw.addEventListener("touchstart", function(e){ touchX = e.touches[0].clientX; }, {passive:true});
+  vw.addEventListener("touchend", function(e){
+    if(touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    if(Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+    touchX = null;
+  }, {passive:true});
 
   /* ---------- formation: FIVE-A-SIDE — only what he actually does ---------- */
   var PLAYERS = [
@@ -197,7 +215,7 @@
     setTimeout(function(){ pcCard.classList.remove("is-hot"); }, 600);
   }
 
-  /* ---------- clients wall ---------- */
+  /* ---------- clients list ---------- */
   var CLIENTS = [
     ["Serie A","Italy"],["FIFA Club World Cup","Saudi 2023"],["NBA","Basketball"],
     ["Roshn Saudi League","Saudi Arabia"],["Ligue 1","France"],["PIF","Saudi Arabia"],
@@ -206,31 +224,9 @@
     ["NEOM S.C.","Saudi Arabia"],["Al Jazira","UAE"],["Saudi Archery Federation","Saudi Arabia"],
     ["Dubai Basketball","UAE"],["AFC Asian Cup 2027","Saudi Arabia"]
   ];
-  document.getElementById("clientsWall").innerHTML = CLIENTS.map(function(c){
+  document.getElementById("clientsList").innerHTML = CLIENTS.map(function(c){
     return "<li><b>" + c[0] + "</b><span>" + c[1] + "</span></li>";
   }).join("");
-
-  /* ---------- process tabs ---------- */
-  var STEPS = [
-    {t:"Brief in. <em>Nothing lost.</em>", p:"You tell me the match, the moment, the deadline. I ask the questions that save us both a revision — audience, platform, tone, must-haves.", tags:["Match & moment","Platforms","Deadline","Must-haves"]},
-    {t:"Concept. <em>One idea, loud.</em>", p:"I sketch the angle before I touch Photoshop: the headline, the composition, the one thing the eye lands on first. No idea, no design.", tags:["Angle","Headline","Composition","Moodboard"]},
-    {t:"Design. <em>Built to stop thumbs.</em>", p:"Full build in Photoshop and Illustrator — type, cut-outs, colour, light. Every version sized for its platform, from story to stadium screen.", tags:["Photoshop","Illustrator","Type systems","All sizes"]},
-    {t:"Finish. <em>On time, every time.</em>", p:"Final files, named properly, delivered before kick-off — plus the source files and a version for every platform you post on.", tags:["Final files","Source files","All formats","On deadline"]}
-  ];
-  var panel = document.getElementById("processPanel");
-  function renderStep(i){
-    var s = STEPS[i];
-    panel.innerHTML = '<div class="process__panel-inner"><h3>' + s.t + '</h3><p>' + s.p + '</p><div class="process__tags">' +
-      s.tags.map(function(t){ return "<span>" + t + "</span>"; }).join("") + "</div></div>";
-    document.querySelectorAll(".process__tab").forEach(function(b, j){
-      b.classList.toggle("is-active", j === i);
-      b.setAttribute("aria-selected", j === i ? "true" : "false");
-    });
-  }
-  document.querySelectorAll(".process__tab").forEach(function(b){
-    b.addEventListener("click", function(){ renderStep(+b.dataset.step); });
-  });
-  renderStep(0);
 
   /* ---------- boot ---------- */
   renderFilters();

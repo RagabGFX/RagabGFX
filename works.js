@@ -1,4 +1,4 @@
-/* RagabGFX v2 — works data (same 44 works as v1, same stories) */
+/* RagabGFX v3 — works data (same 44 works as v1, same stories) */
 
 const WORKS = [
   /* ---------- IDENTITIES (10) ---------- */
